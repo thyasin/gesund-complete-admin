@@ -6,7 +6,7 @@ import {
     Table,
     useTable,
 } from "@pankod/refine-antd";
-import { useMany } from "@pankod/refine-core";
+import { useMany, useOne } from "@pankod/refine-core";
 import {ICategory, IPost} from "interfaces";
 
 export const PostList: React.FC = () => {
@@ -21,6 +21,13 @@ export const PostList: React.FC = () => {
             enabled: categoryIds.length > 0,
         },
     });
+
+
+    const a = useOne({
+        resource: "categories",
+        id: 1,
+    })
+        console.log(a.data)
 
     return (
         <List>
