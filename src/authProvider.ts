@@ -14,23 +14,13 @@ export const authProvider: AuthProvider = {
         const auth = getAuth(firebaseApp)
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                //@ts-ignore
-                updateProfile(auth.currentUser, {
-                    displayName: "Jane Q. User"
-                  }).then(() => {
-                    console.log("updateProfile");
                     const user = userCredential.user;
                 if (user) {
                     console.log(user);
                     localStorage.setItem(TOKEN_KEY, `${email}-${password}`);
                     return Promise.resolve(); 
                 }
-                    // Profile updated!
-                    // ...
-                  }).catch((error) => {
-                    // An error occurred
-                    // ...
-                  });
+
                 
             // Signed in 
                 
@@ -44,16 +34,29 @@ export const authProvider: AuthProvider = {
     
     register: async ({ email, password }) => {
       
+        const auth = getAuth(firebaseApp)
          createUserWithEmailAndPassword(auth, email, password)
              .then((userCredential) => {
+                //@ts-ignore
+                updateProfile(auth.currentUser, {
+                    displayName: "Jane Q. User"
+                  }).then(() => {
+                    console.log("updateProfile");
+                    const user = userCredential.user;
+                    if (user) {
+                        console.log(user);
+                       // userCredential.user.auth.currentUser.auth.displayName = "test";
+                        localStorage.setItem(TOKEN_KEY, `${email}-${password}`);
+                        return Promise.resolve();
+                    }
+                    // Profile updated!
+                    // ...
+                  }).catch((error) => {
+                    // An error occurred
+                    // ...
+                  });
                  // Signed in 
-                 const user = userCredential.user;
-                 console.log(userCredential);
-                 if (user) {
-                    // userCredential.user.auth.currentUser.auth.displayName = "test";
-                     localStorage.setItem(TOKEN_KEY, `${email}-${password}`);
-                     return Promise.resolve();
-                 }
+                
                  // ...
              })
              .catch((error) => {
