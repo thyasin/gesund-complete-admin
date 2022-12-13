@@ -1,18 +1,13 @@
-
-
 import { Refine } from "@pankod/refine-core";
 import {
   Layout,
   ReadyPage,
   ErrorComponent,
 } from "@pankod/refine-antd";
-
 import "@pankod/refine-antd/dist/styles.min.css";
 import routerProvider from "@pankod/refine-react-router-v6";
-
-
 import { authProvider } from "authProvider";
-import { PostCreate, PostEdit, PostList, PostShow } from "pages/posts";
+import { PostList} from "pages/posts";
 import { AuthPage } from "pages/auth";
 import { notificationProvider } from "providers/notificationProvider";
 import "react-toastify/dist/ReactToastify.css";
@@ -76,9 +71,6 @@ function App() {
         {
           name : "posts",
           list: PostList,
-          show: PostShow,
-          create: PostCreate,
-          edit: PostEdit,
         }
       ]}
     />

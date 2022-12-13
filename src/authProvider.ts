@@ -1,29 +1,24 @@
 import { AuthProvider } from "@pankod/refine-core";
 import { notification } from "@pankod/refine-antd";
-import { browserSessionPersistence, createUserWithEmailAndPassword, getAuth, reauthenticateWithCredential, sendPasswordResetEmail, setPersistence, signInWithEmailAndPassword, updatePassword, updateProfile } from "firebase/auth";
-import { auth, firebaseApp } from "firebaseConfig";
-
-
+import { createUserWithEmailAndPassword, getAuth, sendPasswordResetEmail, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { firebaseApp } from "firebaseConfig";
 
 export const KEY = "auth";
 
 export const authProvider: AuthProvider = {
 
     login: async ({ email, password }) => {
-
         const auth = getAuth(firebaseApp)
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                     const user = userCredential.user;
                 if (user) {
                     user.getIdToken().then((data)=>{
-
                         localStorage.setItem(KEY, JSON.stringify({email:user.email,displayName:user.displayName,accessToken:data,id:user.uid}));
                         return Promise.resolve(); 
                     });
                 }
-
-                
+              
             // Signed in 
                 
             // ...
@@ -34,8 +29,7 @@ export const authProvider: AuthProvider = {
             });
     },
     
-    register: async ({ email, password }) => {
-      
+    register: async ({ email, password }) => {    
         const auth = getAuth(firebaseApp)
          createUserWithEmailAndPassword(auth, email, password)
              .then((userCredential) => {
@@ -47,15 +41,18 @@ export const authProvider: AuthProvider = {
                     const user = userCredential.user;
                     if (user) {
                         user.getIdToken().then((data)=>{
-    
                             localStorage.setItem(KEY, JSON.stringify({email:user.email,displayName:user.displayName,accessToken:data,id:user.uid}));
                             return Promise.resolve(); 
                         });
                     }
+
                     // Profile updated!
+                    
                     // ...
                   }).catch((error) => {
+                    
                     // An error occurred
+                    
                     // ...
                   });
                  // Signed in 
@@ -69,7 +66,6 @@ export const authProvider: AuthProvider = {
     },
        
     updatePassword: async () => {
-        
         notification.success({
             message: "Updated Password",
             description: "Password updated successfully",

@@ -1,13 +1,4 @@
-import { 
-    List,
-    TagField,
-    TextField,
-    DateField,
-    Table,
-    useTable,
-} from "@pankod/refine-antd";
-import { useMany, useOne } from "@pankod/refine-core";
-import {ICategory, IPost} from "interfaces";
+import { useOne } from "@pankod/refine-core";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -20,15 +11,10 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { Pie } from 'react-chartjs-2';
-
-
-import React, { useEffect, useState } from 'react'
-import { Line } from "react-chartjs-2"
-
+import React, { useState } from 'react'
 
 export const PostList: React.FC = () => {
     const [chartData, setChartData] = useState<any>();
-
 
 const obj = {
     "Al / Machine Learning":[],
@@ -51,9 +37,6 @@ const obj = {
           "University or other Academia":[],
           "Other":[]
 }
-
-
-    
 
     const a = useOne({
         resource: "categories",
@@ -88,7 +71,8 @@ console.log(obj)
             },
           };
           
-          const labels = ["Al / Machine Learning",
+          const labels = [
+          "Al / Machine Learning",
           "Biotechnology",
           "Cloud Computing",
           "Contract Research Organisation",
@@ -106,7 +90,8 @@ console.log(obj)
           "Professional Advisory / Legal / Consultancy",
           "Research Institute",
           "University or other Academia",
-          "Other"];
+          "Other"
+        ];
           
           const data = {
             labels,
@@ -114,7 +99,7 @@ console.log(obj)
               {
                 label: 'work For',
                 data: Object.values(obj).map(i=>i.length),
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                backgroundColor: 'rgba(0, 255, 167)',
               }
             ],
           };
@@ -152,6 +137,41 @@ console.log(obj)
                   'rgba(255, 159, 64, 1)',
                 ],
                 borderWidth: 1,
+                radius: "70%",
+                options: {
+                  responsive: true
+                },
+                }
+            ],
+          };
+
+          const dataPieFree = {
+            labels: b && Object.keys(objPie),
+            datasets: [
+              {
+                label: 'Country',
+                data: b && Object.values(objPie).map((i:any)=>i.length),
+                backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(255, 159, 64, 0.2)',
+                ],
+                borderColor: [
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(255, 159, 64, 1)',
+                ],
+                borderWidth: 1,
+                radius: "70%",
+                ooptions: {
+                  responsive: true
+                },
               },
             ],
           };
@@ -173,6 +193,7 @@ console.log(obj)
             {/* @ts-ignore */}
             <Bar options={options} data={data} />
             <Pie data={dataPie}/>
-    </div>
+            <Pie data={dataPieFree} />
+        </div>
     );
 };

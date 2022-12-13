@@ -1,12 +1,5 @@
-import { initializeFirebase, 
-    FirebaseAuth,
-    FirebaseDatabase,
-    FirestoreDatabase, } from "refine-firebase";
-
-
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-
 
 export const firebaseConfig = {
     apiKey: "AIzaSyBw4Tv2ieTU96rx6h98DBZklT26xK98kxk",
