@@ -5,7 +5,7 @@ import { auth, firebaseApp } from "firebaseConfig";
 
 
 
-export const TOKEN_KEY = "refine-auth";
+export const KEY = "auth";
 
 export const authProvider: AuthProvider = {
 
@@ -16,9 +16,11 @@ export const authProvider: AuthProvider = {
             .then((userCredential) => {
                     const user = userCredential.user;
                 if (user) {
-                    console.log(user);
-                    localStorage.setItem(TOKEN_KEY, `${email}-${password}`);
-                    return Promise.resolve(); 
+                    user.getIdToken().then((data)=>{
+
+                        localStorage.setItem(KEY, JSON.stringify({email:user.email,displayName:user.displayName,accessToken:data,id:user.uid}));
+                        return Promise.resolve(); 
+                    });
                 }
 
                 
@@ -44,10 +46,11 @@ export const authProvider: AuthProvider = {
                     console.log("updateProfile");
                     const user = userCredential.user;
                     if (user) {
-                        console.log(user);
-                       // userCredential.user.auth.currentUser.auth.displayName = "test";
-                        localStorage.setItem(TOKEN_KEY, `${email}-${password}`);
-                        return Promise.resolve();
+                        user.getIdToken().then((data)=>{
+    
+                            localStorage.setItem(KEY, JSON.stringify({email:user.email,displayName:user.displayName,accessToken:data,id:user.uid}));
+                            return Promise.resolve(); 
+                        });
                     }
                     // Profile updated!
                     // ...
@@ -95,13 +98,13 @@ export const authProvider: AuthProvider = {
     },
 
     logout: () => {
-        localStorage.removeItem(TOKEN_KEY);
+        localStorage.removeItem(KEY);
         return Promise.resolve();
     },
 
     checkError: () => Promise.resolve(),
     checkAuth: () => {
-        const token = localStorage.getItem(TOKEN_KEY);
+        const token = localStorage.getItem(KEY);
         if (token) {
             return Promise.resolve();
         }
@@ -111,15 +114,17 @@ export const authProvider: AuthProvider = {
 
     getPermissions: () => Promise.resolve(),
     getUserIdentity: async () => {
-        const token = localStorage.getItem(TOKEN_KEY);
+        const token = localStorage.getItem(KEY);
+        //@ts-ignore
+        const authInfo = JSON.parse(token)
         if (!token) {
             return Promise.reject();
         }
 
         return Promise.resolve({
             id: 1,
-            name: "James Sullivan",
-            avatar: "https://i.pravatar.cc/150",
+            name: authInfo.email,
+            avatar: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
         });
     },
 };
