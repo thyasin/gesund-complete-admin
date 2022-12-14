@@ -100,7 +100,7 @@ console.log(obj)
                 label: 'work For',
                 data: Object.values(obj).map(i=>i.length),
                 backgroundColor: 'rgba(0, 255, 167)',
-              }
+            }
             ],
           };
 
@@ -138,9 +138,6 @@ console.log(obj)
                 ],
                 borderWidth: 1,
                 radius: "70%",
-                options: {
-                  responsive: true
-                },
                 }
             ],
           };
@@ -169,9 +166,6 @@ console.log(obj)
                 ],
                 borderWidth: 1,
                 radius: "70%",
-                ooptions: {
-                  responsive: true
-                },
               },
             ],
           };
