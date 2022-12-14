@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^4.8.0",
     "@pankod/refine-antd": "^3.18.0",
     "@pankod/refine-cli": "^1.2.0",
     "@pankod/refine-core": "^3.18.0",
