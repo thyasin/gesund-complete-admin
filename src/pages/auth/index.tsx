@@ -13,18 +13,14 @@ const RenderAuthContent = (content: React.ReactNode) => {
     const { Link } = useRouterContext();
 
     return (
-        <div
-            style={{
-                maxWidth: 408,
-                margin: "auto",
-            }}
+        <div className="general_bar"
+            
         >
             <Link to="/">
-                <img
-                    style={{ marginBottom: 26 }}
+                <img 
+                    className="logo"
                     src="https://www.gesund.ai/gesundLogo.svg"
                     alt="Logo"
-                    width="100%"
                 />
             </Link>
             {content}

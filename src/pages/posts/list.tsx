@@ -31,7 +31,7 @@ export const PDfDownload: React.FC = () => {
 
 
 const obj = {
-    "Al / Machine Learning":[],
+          "Al / Machine Learning":[],
           "Biotechnology":[],
           "Cloud Computing":[],
           "Contract Research Organisation":[],
@@ -83,6 +83,11 @@ const pdfDownloadFormData = useOne({
                 text: selectedPaper,
               },
             },
+            scales: {
+              x: {
+              display: false,
+              }
+              }
           };
           
 
@@ -161,14 +166,14 @@ const pdfDownloadFormData = useOne({
 
     return (
         <div >
-          <Select options={selectDataForPapers} onChange={(e)=>setSelectedPaper(e)}/>
-            <Bar options={options} data={dataChart} />
-            <div style={{display:"flex"}}>
-            <div style={{width:"50%",display: "flex"}}>
-            <Pie data={dataPie}/>
+          <Select className="select_btn" options={selectDataForPapers} onChange={(e)=>setSelectedPaper(e)}/>
+            <Bar className="bar_char" options={options} data={dataChart} />
+            <div className="chart_gen" >
+            <div className="chart_chi" >
+            <Pie className="pie_char" data={dataPie}/>
             </div>
-            <div style={{width:"50%",display:"flex", alignItems:"center",justifyContent:"center"}}>
-              <span style={{fontSize:"32px", border:"1px solid gray", padding:"16px", borderRadius:"8px"}}>Total : {b && (Object.values(b)).length}</span>  
+            <div className="top" >
+              <span className="total" >Total : {b && (Object.values(b)).length}</span>  
             </div>
             </div>
           

@@ -16,7 +16,7 @@ import { CustomSider } from "components/sider";
 import { dataProvider } from "dataProvider";
 import {useState, useRef} from "react"
 import Navbar from "components/navbar";
-
+import "./app.css";
 
 function App() {
   const [collapsed, setCollapsed] = useState(false);
@@ -31,7 +31,7 @@ function App() {
       // notificationProvider={notificationProvider}
       Title={() => (
         <div>
-            <img src="./gesundLogo.svg" alt="Logo" width="75%" />
+            <img className="gesund_img" src="./gesundLogo.svg" alt="Logo" />
         </div>
     )}
     Layout={Layout}

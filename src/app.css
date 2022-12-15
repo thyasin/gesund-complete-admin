@@ -1,0 +1,95 @@
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 4%;
+}
+
+.avatar_img {
+    border-radius: 100%;
+    padding: 5px;
+}
+
+.logbtn {
+    background-color: transparent;
+    border: none;
+}
+
+.general_bar {
+    max-width: 408px;
+    margin: auto;
+}
+
+.logo {
+    margin-bottom: 26px; 
+    width: 100%;
+}
+
+
+.gesund_img {
+    width: 75%;
+    margin-left: 8px;
+    margin-top: 8px;
+}
+
+.chart_gen {
+    display: flex;
+}
+
+.chart_chi {
+    width: 50%;
+    display: flex;
+}
+
+.top {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+
+.select_btn {
+    float: right;
+    width: 20%;
+}
+
+.pie_char {
+    width: 600px !important;
+    height: 600px !important;
+}
+
+.total { 
+    font-size: 32px;
+    border: 1px solid gray;    
+    padding: 16px;
+    border-radius: 8px;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .total { 
+        font-size: 12px;
+        border: 1px solid gray;    
+        padding: 16px;
+        border-radius: 8px;
+    }   
+
+    .gesund_img {
+        width: 75%;
+        margin-left: 18px;
+        margin-top: 8px;
+    }
+
+    .select_btn {
+        float: right;
+        width: 55%;
+    }
+
+    .pie_char {
+        width: 200px !important;
+        height: 200px !important;
+    }
+    
+
+}
+
