@@ -24,6 +24,7 @@ function App() {
     <Refine
       authProvider={authProvider}
       dataProvider={{default:dataProvider()}}
+      //@ts-ignore
       // notificationProvider={notificationProvider}
       Title={() => (
         //@ts-ignore

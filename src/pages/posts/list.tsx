@@ -1,4 +1,4 @@
-import { useOne } from "@pankod/refine-core";
+import { useMany, useOne } from "@pankod/refine-core";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,10 +11,23 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { Pie } from 'react-chartjs-2';
-import React  from 'react'
+import React, {useState}  from 'react'
+import { Select } from "@pankod/refine-antd";
 
 
 export const PDfDownload: React.FC = () => {
+
+  const [selectedPaper,setSelectedPaper] = useState("")
+
+
+    const paperNames = useMany({resource: "", ids:[]})
+    const paperNamesData = paperNames.data
+    let paperData = paperNamesData &&  Object.keys(paperNamesData)
+    const selectDataForPapers = paperData?.map(i=>{
+      return ({value:i,label:i})
+    })
+
+// console.log(selectDataForPapers)
 
 
 const obj = {
@@ -38,16 +51,16 @@ const obj = {
           "University or other Academia":[],
           "Other":[]
 }
+const pdfDownloadFormData = useOne({
+  resource: selectedPaper,
+  id: 1,
 
-    const a = useOne({
-        resource: "categories",
-        id: 1,
     })
-
-    const b = a?.data
+// @ts-ignore
+    const b = pdfDownloadFormData?.data
     // @ts-ignore
-      b && Object.values(Object.values(b)[0])?.map(i=>obj[i.workfor].push(i))
-console.log(obj)
+      b && Object.values(b)?.map(i=>obj[i.workfor].push(i))
+
 
           ChartJS.register(
             CategoryScale,
@@ -107,9 +120,9 @@ console.log(obj)
           };
 
           const objPie: any = {}
-          b && console.log(Object.values(Object.values(b)[0]))
+          b && console.log(Object.values(b))
 
-          b && Object.values(Object.values(b)[0]).map((i:any)=>{
+          b && Object.values(b).map((i:any)=>{
             if (objPie[i.country]) objPie[i.country]=[...objPie[i.country],i.country]
             else objPie[i.country]=[i.country]
             })
@@ -148,9 +161,15 @@ console.log(obj)
 
     return (
         <div>
+          <Select options={selectDataForPapers} onChange={(e)=>setSelectedPaper(e)}/>
             <Bar options={options} data={dataChart} />
+            <div style={{display:"flex"}}>
             <div style={{width:"50%",display: "flex"}}>
             <Pie data={dataPie}/>
+            </div>
+            <div style={{width:"50%",display:"flex", alignItems:"center",justifyContent:"center"}}>
+              <span style={{fontSize:"32px", border:"1px solid gray", padding:"16px", borderRadius:"8px"}}>Total : {b && (Object.values(b)).length}</span>  
+            </div>
             </div>
           
  
