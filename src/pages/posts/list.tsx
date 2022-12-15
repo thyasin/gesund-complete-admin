@@ -80,7 +80,7 @@ const pdfDownloadFormData = useOne({
               },
               title: {
                 display: true,
-                text: 'Chart.js Bar Chart',
+                text: selectedPaper,
               },
             },
           };
@@ -160,7 +160,7 @@ const pdfDownloadFormData = useOne({
 
 
     return (
-        <div>
+        <div >
           <Select options={selectDataForPapers} onChange={(e)=>setSelectedPaper(e)}/>
             <Bar options={options} data={dataChart} />
             <div style={{display:"flex"}}>

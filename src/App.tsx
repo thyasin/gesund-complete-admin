@@ -20,45 +20,21 @@ import Navbar from "components/navbar";
 
 function App() {
   const [collapsed, setCollapsed] = useState(false);
+
+
   return (
+
     <Refine
       authProvider={authProvider}
       dataProvider={{default:dataProvider()}}
       //@ts-ignore
       // notificationProvider={notificationProvider}
       Title={() => (
-        //@ts-ignore
         <div>
-          {console.log(collapsed)}
-            {!collapsed && <img src="./gesundLogo.svg" alt="Logo" width="75%" />}
-            <span>Gesund</span>
+            <img src="./gesundLogo.svg" alt="Logo" width="75%" />
         </div>
     )}
-      Layout={({ children, Footer, OffLayoutArea }) => (
-        <AntdLayout>
-          {/* <AntdLayout.Header>
-            <div style={{width:"100%"}}>navbar</div>
-          </AntdLayout.Header> */}
-          <AntdLayout.Sider collapsible={true} collapsed={collapsed} onCollapse={(collapsed: boolean): void => setCollapsed(collapsed)}>
-                <CustomSider />
-
-            </AntdLayout.Sider>
-
-            <AntdLayout.Content>
-              
-                <AntdLayout.Content>
-                  <AntdLayout.Header>
-            <Navbar/>
-          </AntdLayout.Header>
-                    <div style={{ padding: 24, minHeight: 360 }}>
-                        {children}
-                    </div>
-                </AntdLayout.Content>
-                {Footer && <Footer />}
-            </AntdLayout.Content>
-            {/* {OffLayoutArea && <OffLayoutArea />} */}
-        </AntdLayout>
-    )}
+    Layout={Layout}
       // ReadyPage={ReadyPage}
       catchAll={<ErrorComponent />}
       routerProvider={{
