@@ -15,22 +15,31 @@ import { AntdLayout } from "@pankod/refine-antd";
 import { CustomSider } from "components/sider";
 import { dataProvider } from "dataProvider";
 import {useState, useRef} from "react"
+import Navbar from "components/navbar";
 
 
 function App() {
-  const isSiderCollapsed = useRef<boolean>(false)
+  const [collapsed, setCollapsed] = useState(false);
   return (
     <Refine
       authProvider={authProvider}
       dataProvider={{default:dataProvider()}}
       // notificationProvider={notificationProvider}
+      Title={() => (
+        //@ts-ignore
+        <div>
+          {console.log(collapsed)}
+            {!collapsed && <img src="./gesundLogo.svg" alt="Logo" width="75%" />}
+            <span>Gesund</span>
+        </div>
+    )}
       Layout={({ children, Footer, OffLayoutArea }) => (
         <AntdLayout>
           {/* <AntdLayout.Header>
             <div style={{width:"100%"}}>navbar</div>
           </AntdLayout.Header> */}
-          <AntdLayout.Sider collapsible={true} onCollapse={(e)=>{isSiderCollapsed.current = e}}>
-                <CustomSider isSiderCollapsed={isSiderCollapsed.current}/>
+          <AntdLayout.Sider collapsible={true} collapsed={collapsed} onCollapse={(collapsed: boolean): void => setCollapsed(collapsed)}>
+                <CustomSider />
 
             </AntdLayout.Sider>
 
@@ -38,7 +47,7 @@ function App() {
               
                 <AntdLayout.Content>
                   <AntdLayout.Header>
-            <div style={{width:"100%"}}>navbar</div>
+            <Navbar/>
           </AntdLayout.Header>
                     <div style={{ padding: 24, minHeight: 360 }}>
                         {children}

@@ -9,13 +9,12 @@ interface ISiderProps{
         isSiderCollapsed:boolean
     }
 
-export const CustomSider = ({isSiderCollapsed}:ISiderProps) => {
+export const CustomSider = () => {
     const Title = useTitle();
     const { menuItems, selectedKey } = useMenu();
 
     return (
         <>
-        {/* {!isSiderCollapsed ? <img src="./gesundLogo.svg"/> : <img src="./favicon.svg"/>} */}
             {Title && <Title collapsed={false} />}
             <Menu selectedKeys={[selectedKey]} mode="vertical">
                 {menuItems.map(({ icon, route, label }) => (
