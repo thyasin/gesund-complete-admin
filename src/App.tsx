@@ -7,7 +7,7 @@ import {
 import "@pankod/refine-antd/dist/styles.min.css";
 import routerProvider from "@pankod/refine-react-router-v6";
 import { authProvider } from "authProvider";
-import { PDfDownload} from "pages/posts";
+
 import { AuthPage } from "pages/auth";
 import { notificationProvider } from "providers/notificationProvider";
 import "react-toastify/dist/ReactToastify.css";
@@ -17,6 +17,7 @@ import { dataProvider } from "dataProvider";
 import {useState, useRef} from "react"
 import Navbar from "components/navbar";
 import "./app.css";
+import { PDfDownload } from "pages/download_pdf";
 
 function App() {
   const [collapsed, setCollapsed] = useState(false);
@@ -30,9 +31,9 @@ function App() {
       //@ts-ignore
       // notificationProvider={notificationProvider}
       Title={() => (
-        <div>
+        
             <img className="gesund_img" src="./gesundLogo.svg" alt="Logo" />
-        </div>
+        
     )}
     Layout={Layout}
       // ReadyPage={ReadyPage}

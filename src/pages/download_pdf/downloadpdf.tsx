@@ -13,12 +13,14 @@ import { Bar } from 'react-chartjs-2';
 import { Pie } from 'react-chartjs-2';
 import React, {useState}  from 'react'
 import { Select } from "@pankod/refine-antd";
+import useDimension from "./hooks/useDimension";
+import { DownloadOutlined } from "@ant-design/icons";
 
 
 export const PDfDownload: React.FC = () => {
 
   const [selectedPaper,setSelectedPaper] = useState("")
-
+const {isWidthSmall} = useDimension();
 
     const paperNames = useMany({resource: "", ids:[]})
     const paperNamesData = paperNames.data
@@ -27,7 +29,6 @@ export const PDfDownload: React.FC = () => {
       return ({value:i,label:i})
     })
 
-// console.log(selectDataForPapers)
 
 
 const obj = {
@@ -57,9 +58,9 @@ const pdfDownloadFormData = useOne({
 
     })
 // @ts-ignore
-    const b = pdfDownloadFormData?.data
+    const selectedPaperData = pdfDownloadFormData?.data
     // @ts-ignore
-      b && Object.values(b)?.map(i=>obj[i.workfor].push(i))
+    selectedPaperData && Object.values(selectedPaperData)?.map(i=>obj[i.workfor].push(i))
 
 
           ChartJS.register(
@@ -85,7 +86,7 @@ const pdfDownloadFormData = useOne({
             },
             scales: {
               x: {
-              display: false,
+              display: !isWidthSmall,
               }
               },
           };
@@ -125,21 +126,27 @@ const pdfDownloadFormData = useOne({
           };
 
           const objPie: any = {}
-          b && console.log(Object.values(b))
 
-          b && Object.values(b).map((i:any)=>{
+          selectedPaperData && Object.values(selectedPaperData).map((i:any)=>{
             if (objPie[i.country]) objPie[i.country]=[...objPie[i.country],i.country]
             else objPie[i.country]=[i.country]
             })
 
+            
+            const filteredPieData = Object.values(objPie).map((i:any)=>{
+              return ({[i[0]] : i.length })
+            })
+          const sortedPieData = filteredPieData.sort((a,b)=>Object.values(b)[0]-Object.values(a)[0])
+
+          console.log(sortedPieData)
 
 
           const dataPie = {
-            labels: b && Object.keys(objPie),
+            labels: selectedPaperData && sortedPieData.map(i=>{return(Object.keys(i))}).slice(0,6),
             datasets: [
               {
                 label: 'Country',
-                data: b && Object.values(objPie).map((i:any)=>i.length),
+                data: selectedPaperData && sortedPieData.map(i=>{return(Object.values(i))}).slice(0,6),
                 backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',
@@ -165,21 +172,15 @@ const pdfDownloadFormData = useOne({
 
     return (
         <div >
-          <Select className="select_btn" options={selectDataForPapers} onChange={(e)=>setSelectedPaper(e)}/>
+          <Select className="select_btn" allowClear placeholder="Select a paper" options={selectDataForPapers} onChange={(e)=>setSelectedPaper(e)}/>
             <Bar className="bar_char" options={options} data={dataChart} />
             <div className="chart_gen" >
-            <ul className="list">
-              <li>
-                <div className="chart_chi" >
-                  <Pie className="pie_char" data={dataPie}/>
-                </div>
-              </li>
-              <li>
-                <div className="top" >
-                  <span className="total" >Total : {b && (Object.values(b)).length}</span>  
-                </div>
-              </li>
-            </ul>
+            <div className="chart_chi" >
+            {selectedPaper && <Pie className="pie_char" data={dataPie}/>}
+            </div>
+            <div className="top" >
+            {selectedPaperData && <span className="total" ><DownloadOutlined/> Total Download : <b>{(Object.values(selectedPaperData)).length}</b></span>}  
+            </div>
             </div>
         </div>
     );
