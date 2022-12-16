@@ -22,9 +22,12 @@ import { PDfDownload } from "pages/download_pdf";
 function App() {
   const [collapsed, setCollapsed] = useState(false);
 
+  function rgba(arg0: number, arg1: number, arg2: number): any {
+    throw new Error("Function not implemented.");
+  }
 
   return (
-
+    <div>
     <Refine
       authProvider={authProvider}
       dataProvider={{default:dataProvider()}}
@@ -86,9 +89,10 @@ function App() {
           list: PDfDownload,
         }
       ]}
+      
     />
-
-
+      
+      </div>
   );
 }
 

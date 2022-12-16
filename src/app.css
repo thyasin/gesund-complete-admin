@@ -68,6 +68,10 @@
     width: 15%;
 }
 
+.select_btn:hover {
+    border-color: rgba(0,255,167,255);
+}
+
 .pie_char {
     width: 85% !important;
     height: auto !important;
@@ -78,6 +82,8 @@
     border: 1px solid gray;    
     padding: 16px;
     border-radius: 8px;
+    background-color: rgba(0, 255, 167);
+    font-weight: bold;
 }
 
 .list {
