@@ -87,7 +87,7 @@ const pdfDownloadFormData = useOne({
               x: {
               display: false,
               }
-              }
+              },
           };
           
 
@@ -158,26 +158,29 @@ const pdfDownloadFormData = useOne({
                 ],
                 borderWidth: 1,
                 radius: "70%",
-                }
+                },
             ],
+            align: "center",
           };
-
-
 
     return (
         <div >
           <Select className="select_btn" options={selectDataForPapers} onChange={(e)=>setSelectedPaper(e)}/>
             <Bar className="bar_char" options={options} data={dataChart} />
             <div className="chart_gen" >
-            <div className="chart_chi" >
-            <Pie className="pie_char" data={dataPie}/>
+            <ul className="list">
+              <li>
+                <div className="chart_chi" >
+                  <Pie className="pie_char" data={dataPie}/>
+                </div>
+              </li>
+              <li>
+                <div className="top" >
+                  <span className="total" >Total : {b && (Object.values(b)).length}</span>  
+                </div>
+              </li>
+            </ul>
             </div>
-            <div className="top" >
-              <span className="total" >Total : {b && (Object.values(b)).length}</span>  
-            </div>
-            </div>
-          
- 
         </div>
     );
 };
