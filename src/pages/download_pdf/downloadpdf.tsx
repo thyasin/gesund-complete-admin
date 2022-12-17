@@ -82,6 +82,7 @@ const pdfDownloadFormData = useOne({
               title: {
                 display: true,
                 text: selectedPaper,
+                color: "rgb(0, 0, 0)",
               },
             },
             scales: {
@@ -171,7 +172,7 @@ const pdfDownloadFormData = useOne({
           };
 
     return (
-        <div >
+        <div>
           <Select className="select_btn" allowClear placeholder="Select a paper" options={selectDataForPapers} onChange={(e)=>setSelectedPaper(e)}/>
             <Bar className="bar_char" options={options} data={dataChart} />
             <div className="chart_gen" >
