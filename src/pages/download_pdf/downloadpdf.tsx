@@ -88,7 +88,17 @@ const pdfDownloadFormData = useOne({
             scales: {
               x: {
               display: !isWidthSmall,
+              ticks: {
+                color: "rgb(0, 255, 167)"
               }
+            },
+              y: {
+               ticks: {
+                  color: "rgb(0, 255, 167)"
+                } 
+                          
+              }
+              
               },
           };
           
@@ -121,7 +131,7 @@ const pdfDownloadFormData = useOne({
               {
                 label: 'work For',
                 data: Object.values(obj).map(i=>i.length),
-                backgroundColor: 'rgba(0, 255, 167)',
+                backgroundColor: "rgba(0, 255, 167)",
             }
             ],
           };
@@ -172,7 +182,7 @@ const pdfDownloadFormData = useOne({
           };
 
     return (
-        <div>
+        <div> 
           <Select className="select_btn" allowClear placeholder="Select a paper" options={selectDataForPapers} onChange={(e)=>setSelectedPaper(e)}/>
             <Bar className="bar_char" options={options} data={dataChart} />
             <div className="chart_gen" >

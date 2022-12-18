@@ -4,18 +4,33 @@
     align-items: center;
 }
 
-.bar_char{
-    margin-bottom: 32px;
-    background-color: rgba(242,242,242,255);
+.gesund_img {
+    width: 100%;
+    padding: 12px;
+    /* margin-left: 8px;
+    margin-top: 8px; */
 }
 
+
+.ant-head {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0px 24px;
+    height: 64px;
+    background-color: #fff;
+}
+
+.logbtn {
+    background-color: transparent;
+    border: none;   
+}
 
 .navbar {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    width: 4%;
-    
+    width: 4%;   
 }
 
 .avatar_img {
@@ -25,8 +40,7 @@
 
 .logbtn {
     background-color: transparent;
-    border: none;
-    
+    border: none;   
 }
 
 .general_bar {
@@ -38,13 +52,14 @@
     margin-bottom: 26px; 
     width: 100%;
 }
+.select_btn {
+    float: right;
+    width: 15%;
+    color: rgb(0, 0, 0);
+}
 
-
-.gesund_img {
-    width: 100%;
-    padding: 12px;
-    /* margin-left: 8px;
-    margin-top: 8px; */
+.bar_char{
+    margin-bottom: 32px;
 }
 
 .chart_gen {
@@ -57,26 +72,21 @@
     display: flex;
 }
 
+::selection {
+    background: rgba(0, 255, 167);
+}
+
+.pie_char {
+    width: 85% !important;
+    height: auto !important;
+}
+
 .top {
     display: flex;
     align-items: center;
     justify-content: center;
     width:fit-content;
     margin:0 auto;
-
-    }
-
-.select_btn {
-    float: right;
-    width: 15%;
-    color: rgb(0, 0, 0);
-
-}
-
-
-.pie_char {
-    width: 85% !important;
-    height: auto !important;
 }
 
 .total { 
@@ -87,13 +97,6 @@
     color: black;
     background-color: rgba(0, 255, 167);
     font-weight: bold;
-}
-
-.list {
-    list-style-type: none;
-    display: inline;
-    width:fit-content;
-    margin:0 auto;
 }
 
 .ant-layout-sider {
@@ -112,9 +115,14 @@
     background-color: rgba(0, 255, 167) !important;
 }
 
+.ant-layout-header.ant-head {
+    text-align: right;
+}
+
 .ant-layout-header {
     background-color: #dddcdc !important;
 }
+
 
 .ant-space-item {
     color: black;
@@ -189,6 +197,12 @@
     scrollbar-color: rgba(0, 255, 167);
 }
 
+.list {
+    list-style-type: none;
+    display: inline;
+    width:fit-content;
+    margin:0 auto;
+}
 
 @media only screen and (max-width: 767px) {
     .total { 

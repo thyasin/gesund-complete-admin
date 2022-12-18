@@ -2,7 +2,6 @@ import { LogoutOutlined } from "@ant-design/icons";
 import { Button, Tooltip } from "@pankod/refine-antd";
 import { useGetIdentity, useLogout } from "@pankod/refine-core";
 
-
 export default function Navbar() {
     const { mutate: logout } = useLogout();
     const { data: identity } = useGetIdentity<{ avatar:string ,email:string ,id: number; name: string}>();

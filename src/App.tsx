@@ -17,17 +17,25 @@ import { dataProvider } from "dataProvider";
 import {useState, useRef} from "react"
 import Navbar from "components/navbar";
 import "./app.css";
+import { ThemeSwitcherProvider } from "react-css-theme-switcher";
 import { PDfDownload } from "pages/download_pdf";
+import { Header } from "components/layout";
 
 function App() {
+  const currThemes = {
+    dark: "./antd.dark-theme.css",
+    light: "./antd.light-theme.css",
+};
   const [collapsed, setCollapsed] = useState(false);
-
+  
   function rgba(arg0: number, arg1: number, arg2: number): any {
     throw new Error("Function not implemented.");
   }
 
   return (
+    <ThemeSwitcherProvider themeMap={currThemes} defaultTheme="light">
     <div>
+      
     <Refine
       authProvider={authProvider}
       dataProvider={{default:dataProvider()}}
@@ -39,6 +47,7 @@ function App() {
         
     )}
     Layout={Layout}
+    Header={Header}
       // ReadyPage={ReadyPage}
       catchAll={<ErrorComponent />}
       routerProvider={{
@@ -91,8 +100,9 @@ function App() {
       ]}
       
     />
-      
+    
       </div>
+      </ThemeSwitcherProvider>
   );
 }
 
