@@ -20,6 +20,11 @@ import { useThemeSwitcher } from "react-css-theme-switcher";
 
 export const PDfDownload: React.FC = () => {
 
+
+
+
+
+
   const [selectedPaper,setSelectedPaper] = useState("")
 const {isWidthSmall} = useDimension();
 const { currentTheme } = useThemeSwitcher();
@@ -30,7 +35,6 @@ const { currentTheme } = useThemeSwitcher();
     const selectDataForPapers = paperData?.map(i=>{
       return ({value:i,label:i})
     })
-
 
 
 const obj = {
@@ -59,7 +63,7 @@ const pdfDownloadFormData = useOne({
   id: 1,
 
     })
-// @ts-ignore
+
     const selectedPaperData = pdfDownloadFormData?.data
     // @ts-ignore
     selectedPaperData && Object.values(selectedPaperData)?.map(i=>obj[i.workfor].push(i))
@@ -155,7 +159,6 @@ const pdfDownloadFormData = useOne({
             })
           const sortedPieData = filteredPieData.sort((a,b)=>Object.values(b)[0]-Object.values(a)[0])
 
-          console.log(sortedPieData)
 
 
           const dataPie = {

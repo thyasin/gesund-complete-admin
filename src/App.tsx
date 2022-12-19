@@ -15,6 +15,7 @@ import "./app.css";
 import { ThemeSwitcherProvider } from "react-css-theme-switcher";
 import { PDfDownload } from "pages/download_pdf";
 import { Header } from "components/layout";
+import VisitStats from "pages/visit_stats/visitstats";
 
 function App() {
   const currThemes = {
@@ -89,7 +90,11 @@ function App() {
         {
           name : "pdf-download",
           list: PDfDownload,
-        }
+        },
+        {
+          name : "visit-stats",
+          list: VisitStats,
+        },
       ]}
       
     />

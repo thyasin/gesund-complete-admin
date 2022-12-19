@@ -1,0 +1,68 @@
+.mainVisitBox {
+    flex-direction: row;
+    align-items: center;
+}
+
+.visitPieBox {
+    width: 55%;
+}
+
+.visitTextBox {
+    width: 100%;
+    border: 1px solid gray;
+    padding: 24px;
+    border-radius: 8px 8px 0 0;
+    height: 400px;
+    overflow-y: scroll;
+
+}
+
+.rightColBox{
+    width: 20%;
+}
+
+.totalTextBox {
+    display: flex;
+    justify-content: space-between;
+    padding: 24px;
+    font-size: 24px;
+    border: 1px solid gray;
+    border-radius: 0 0 8px 8px
+}
+
+@media only screen and (max-width: 767px) {
+
+    .mainVisitBox {
+        flex-direction: column;
+    }
+
+    .visitPieBox {
+        width: 100%;
+    }
+
+    .visitTextBox {
+        width: 100%;
+        padding: 0 12px;
+        height: 300px;
+    }
+
+    .visitPieChart {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .rightColBox{
+        width: 80%;
+    }
+
+    .totalTextBox {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px;
+        font-size: 16px;
+        border: 1px solid gray;
+        border-radius: 0 0 8px 8px
+    }
+
+
+}

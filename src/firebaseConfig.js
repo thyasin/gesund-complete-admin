@@ -2,12 +2,14 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 export const firebaseConfig = {
-    apiKey: "AIzaSyBw4Tv2ieTU96rx6h98DBZklT26xK98kxk",
-    authDomain: "admin-panel-d019d.firebaseapp.com",
-    projectId: "admin-panel-d019d",
-    storageBucket: "admin-panel-d019d.appspot.com",
-    messagingSenderId: "880449143423",
-    appId: "1:880449143423:web:593f0180add93cb8d5b54a",
+  apiKey: process.env.REACT_APP_FIREBASE_SECRET,
+  authDomain: "gesund-admin.firebaseapp.com",
+  databaseURL: "https://gesund-admin-default-rtdb.firebaseio.com",
+  projectId: "gesund-admin",
+  storageBucket: "gesund-admin.appspot.com",
+  messagingSenderId: "1060738427390",
+  appId: "1:1060738427390:web:66c2b31f1cd0c25d5db8af",
+  measurementId: "G-YYEWMRQB4G"
   };
 
 export const firebaseApp = initializeApp(firebaseConfig);
