@@ -15,12 +15,14 @@ import React, {useState}  from 'react'
 import { Select } from "@pankod/refine-antd";
 import useDimension from "./hooks/useDimension";
 import { DownloadOutlined } from "@ant-design/icons";
+import { useThemeSwitcher } from "react-css-theme-switcher";
 
 
 export const PDfDownload: React.FC = () => {
 
   const [selectedPaper,setSelectedPaper] = useState("")
 const {isWidthSmall} = useDimension();
+const { currentTheme } = useThemeSwitcher();
 
     const paperNames = useMany({resource: "", ids:[]})
     const paperNamesData = paperNames.data
@@ -82,23 +84,27 @@ const pdfDownloadFormData = useOne({
               title: {
                 display: true,
                 text: selectedPaper,
-                color: "rgb(0, 0, 0)",
+                color: "#696969",
               },
             },
             scales: {
               x: {
               display: !isWidthSmall,
               ticks: {
-                color: "rgb(0, 255, 167)"
-              }
+                color: currentTheme === "light" ? "black" : "gray"
+              },
+              grid: {
+                color: currentTheme === "light" ? "lightgray" : "gray"
+              },
             },
               y: {
                ticks: {
-                  color: "rgb(0, 255, 167)"
-                } 
-                          
-              }
-              
+                color: currentTheme === "light" ? "black" : "gray"
+                },
+                grid: {
+                  color: currentTheme === "light" ? "lightgray" : "gray"
+                },
+              },            
               },
           };
           

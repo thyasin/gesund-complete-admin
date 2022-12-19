@@ -1,7 +1,6 @@
 import { Refine } from "@pankod/refine-core";
 import {
   Layout,
-  ReadyPage,
   ErrorComponent,
 } from "@pankod/refine-antd";
 import "@pankod/refine-antd/dist/styles.min.css";
@@ -9,13 +8,9 @@ import routerProvider from "@pankod/refine-react-router-v6";
 import { authProvider } from "authProvider";
 
 import { AuthPage } from "pages/auth";
-import { notificationProvider } from "providers/notificationProvider";
 import "react-toastify/dist/ReactToastify.css";
-import { AntdLayout } from "@pankod/refine-antd";
-import { CustomSider } from "components/sider";
 import { dataProvider } from "dataProvider";
-import {useState, useRef} from "react"
-import Navbar from "components/navbar";
+import {useState} from "react"
 import "./app.css";
 import { ThemeSwitcherProvider } from "react-css-theme-switcher";
 import { PDfDownload } from "pages/download_pdf";
@@ -40,7 +35,6 @@ function App() {
       authProvider={authProvider}
       dataProvider={{default:dataProvider()}}
       //@ts-ignore
-      // notificationProvider={notificationProvider}
       Title={() => (
         
             <img className="gesund_img" src="./gesundLogo.svg" alt="Logo" />
@@ -48,7 +42,6 @@ function App() {
     )}
     Layout={Layout}
     Header={Header}
-      // ReadyPage={ReadyPage}
       catchAll={<ErrorComponent />}
       routerProvider={{
         ...routerProvider,

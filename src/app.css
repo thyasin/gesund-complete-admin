@@ -1,3 +1,12 @@
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+}
+
+.ant-form-item-control-input-content span {
+    color: black !important;
+}
+
 .align-justify{
     display: flex;
     justify-content: flex-end;
@@ -7,10 +16,7 @@
 .gesund_img {
     width: 100%;
     padding: 12px;
-    /* margin-left: 8px;
-    margin-top: 8px; */
 }
-
 
 .ant-head {
     display: flex;
@@ -35,12 +41,15 @@
 
 .avatar_img {
     border-radius: 100%;
-    padding: 5px;
+    padding: 10px 10px;
+    width: 55px;
+    height: 55px;
 }
 
 .logbtn {
     background-color: transparent;
-    border: none;   
+    border: none;
+    display: none;
 }
 
 .general_bar {
@@ -52,6 +61,7 @@
     margin-bottom: 26px; 
     width: 100%;
 }
+
 .select_btn {
     float: right;
     width: 15%;
@@ -103,8 +113,20 @@
     background-color: #8e0c84;
 }
 
+label.ant-form-item-required {
+    color: gray !important;
+}
+
+div.ant-card-body input {
+    color: black !important;
+}
+
 .ant-layout {
     background-color: #f2f2f2;
+}
+
+span.ant-typography {
+    display: none;
 }
 
 .ant-layout-sider-zero-width-trigger {
@@ -119,13 +141,12 @@
     text-align: right;
 }
 
-.ant-layout-header {
-    background-color: #dddcdc !important;
-}
-
-
 .ant-space-item {
     color: black;
+}
+
+.ant-menu-title-content a::before:hover {
+    background-color: rgba(0, 255, 167);
 }
 
 .ant-card {
@@ -143,6 +164,18 @@
     color: black;
 }
 
+.head-items {
+    padding: 10px 10px;
+}
+
+.header.ant-layout-header.ant-head {
+    padding: 0 24px !important;
+}
+
+.anticon.anticon-download {
+    color: black;
+}
+
 .ant-btn::before {
     background-color: rgba(0, 255, 167);
 }
@@ -152,15 +185,27 @@
 }
 
 .ant-checkbox-wrapper {
-    display: none;
+    color: black !important;
+}
+
+.ant-form.ant-form-vertical.ant-form-hide-required-mark a {
+    color: black !important;
 }
 
 .ant-btn.ant-btn-primary.ant-btn-lg.ant-btn-block {
     background-color: rgba(0, 255, 167);
 }
 
+span.ant-btn.ant-btn-primary.ant-btn-lg.ant-btn-block {
+    color: black !important;
+}
+
 .ant-menu-title-content:hover {
     background-color: rgba(0, 255, 167);
+}
+
+.ant-menu {
+    background-color: transparent !important;
 }
 
 .ant-menu-item {
@@ -170,8 +215,7 @@
 }
 
 .ant-menu-item.ant-menu-item-selected:hover {
-    background-color: rgba(0, 255, 167);
-
+    background-color: rgba(0, 255, 167) !important;
 }
 
 .ant-select-show-arrow:hover {
@@ -181,6 +225,7 @@
 .select_btn:hover {
     border-color: rgba(0, 255, 167);
 }
+
 .ant-menu-item:hover {
     background-color: rgba(0, 255, 167);
 }
@@ -205,6 +250,7 @@
 }
 
 @media only screen and (max-width: 767px) {
+
     .total { 
         font-size: 12px;
         border: 1px solid gray;    
@@ -239,4 +285,6 @@
         height: auto !important;
     }
 }
+
+
 
