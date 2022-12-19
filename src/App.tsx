@@ -16,20 +16,16 @@ import { ThemeSwitcherProvider } from "react-css-theme-switcher";
 import { PDfDownload } from "pages/download_pdf";
 import { Header } from "components/layout";
 import VisitStats from "pages/visit_stats/visitstats";
+import { SelectOutlined } from "@ant-design/icons";
 
 function App() {
   const currThemes = {
     dark: "./antd.dark-theme.css",
     light: "./antd.light-theme.css",
 };
-  const [collapsed, setCollapsed] = useState(false);
-  
-  function rgba(arg0: number, arg1: number, arg2: number): any {
-    throw new Error("Function not implemented.");
-  }
 
   return (
-    <ThemeSwitcherProvider themeMap={currThemes} defaultTheme="light">
+    <ThemeSwitcherProvider themeMap={currThemes} defaultTheme="dark">
     <div>
       
     <Refine
@@ -94,6 +90,7 @@ function App() {
         {
           name : "visit-stats",
           list: VisitStats,
+          icon: <SelectOutlined />
         },
       ]}
       

@@ -8,13 +8,13 @@ import { Tooltip } from "@pankod/refine-antd";
 import { useGetIdentity, useLogout } from "@pankod/refine-core";
 
 export const Header: React.FC = () => {
-    const [isDarkMode, setIsDarkMode] = useState<boolean>();
+    const [isLightMode, setIsLightMode] = useState<boolean>();
     const { switcher, themes, currentTheme } = useThemeSwitcher();
     const { mutate: logout } = useLogout();
     const { data: identity } = useGetIdentity<{ avatar:string ,email:string ,id: number; name: string}>();
 
     function toggleTheme(isChecked: boolean) { // added
-        setIsDarkMode(isChecked);
+        setIsLightMode(isChecked);
         switcher({ theme: isChecked ? themes.dark : themes.light });
     };
     return (
@@ -33,7 +33,8 @@ export const Header: React.FC = () => {
                 <Switch
                     checkedChildren="🌜"
                     unCheckedChildren="🌞"
-                    checked={isDarkMode}
+                    defaultChecked
+                    checked={isLightMode}
                     onChange={toggleTheme}
                 />
             </div>
