@@ -9,13 +9,18 @@ export const authProvider: AuthProvider = {
 
     login: async ({ email, password }) => {
         const auth = getAuth(firebaseApp)
-        signInWithEmailAndPassword(auth, email, password)
+        await signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                     const user = userCredential.user;
                 if (user) {
                     user.getIdToken().then((data)=>{
                         localStorage.setItem(KEY, JSON.stringify({email:user.email,displayName:user.displayName,accessToken:data,id:user.uid}));
+                        notification.success({
+                            message: "Login attempt",
+                            description: `Logged in successfully`,
+                        });
                         return Promise.resolve(); 
+                        
                     });
                 }
               
@@ -25,6 +30,10 @@ export const authProvider: AuthProvider = {
             })
             .catch((error) => {
                 const errorCode = error.code;
+                notification.error({
+                    message: "Login attempt",
+                    description: `Incorrect email or password`,
+                });
                 const errorMessage = error.message;
             });
     },
@@ -95,6 +104,10 @@ export const authProvider: AuthProvider = {
 
     logout: () => {
         localStorage.removeItem(KEY);
+        notification.success({
+            message: "Logout attempt",
+            description: `Logged out successfully`,
+        });
         return Promise.resolve();
     },
 

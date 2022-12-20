@@ -47,6 +47,10 @@ body::-webkit-scrollbar {
     color: black !important;
 }
 
+.ant-card-body:focus {
+    outline-color: black !important;
+}
+
 .align-justify{
     display: flex;
     justify-content: flex-end;
@@ -150,11 +154,15 @@ body::-webkit-scrollbar {
 }
 
 .ant-layout-sider {
-    background-color: #8e0c84;
+    background-color: #4d0547;
 }
 
 label.ant-form-item-required {
-    color: gray !important;
+    color: black !important;
+}
+
+.ant-form-item {
+    border-color: black !important;
 }
 
 div.ant-card-body input {
@@ -163,6 +171,10 @@ div.ant-card-body input {
 
 .ant-layout {
     background-color: #f2f2f2;
+}
+
+.ant-form-item-control-input::selection {
+    color: black !important;
 }
 
 span.ant-typography {
@@ -225,7 +237,15 @@ span.ant-typography {
 }
 
 .ant-checkbox-wrapper {
-    color: black !important;
+    display: none !important;
+}
+
+.ant-input:focus {
+    border-color: black !important;
+}
+
+.ant-input-focused {
+    border-color: black !important;
 }
 
 .ant-form.ant-form-vertical.ant-form-hide-required-mark a {
@@ -272,6 +292,10 @@ span.ant-btn.ant-btn-primary.ant-btn-lg.ant-btn-block {
 
 .ant-typography.ant-typography-ellipsis.ant-typography-single-line.ant-typography-ellipsis-single-line {
     color: black;
+}
+
+h3.ant-typography {
+    color: black !important;
 }
 
 .ReactQueryDevtools:hover {
