@@ -18,11 +18,12 @@ import { DownloadOutlined } from "@ant-design/icons";
 import { useThemeSwitcher } from "react-css-theme-switcher";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
+import DownloadPdfModal from "./components/DownloadPdfModal";
 
 export const PDfDownload: React.FC = () => {
 
   const createPDF = async () => {
-    const pdf = new jsPDF("portrait", "pt", "a4");
+    const pdf = new jsPDF("landscape", "pt", "a4");
     const data = await document.getElementById("pdf");
     //@ts-ignore
     pdf.html(data).then(() => {
@@ -216,13 +217,13 @@ export const PDfDownload: React.FC = () => {
   return (
     <div>
       <div>
-        {selectDataForPapers && <Select className="select_btn" allowClear placeholder="Select a paper" defaultValue={selectDataForPapers[0]?.value} options={selectDataForPapers} onChange={(e) => setSelectedPaper(e)} />}            
-        <Button type="primary" style={{backgroundColor:"darkGray",borderColor:"darkGray"}} onClick={showModal} icon={<DownloadOutlined />}>
+        {selectDataForPapers && <Select className="select_btn" allowClear placeholder="Select a paper" defaultValue={selectDataForPapers[0]?.value} options={selectDataForPapers} onChange={(e) => setSelectedPaper(e)} />}
+        <Button type="primary" style={{ backgroundColor: "darkGray", borderColor: "darkGray" }} onClick={showModal} icon={<DownloadOutlined />}>
           Export Report Pdf
         </Button>
       </div>
 
-        <Bar className="bar_char" options={options} data={dataChart} />
+      <Bar className="bar_char" options={options} data={dataChart} />
       <div className="chart_gen" >
         <div className="chart_chi" >
           {selectedPaper && <Pie className="pie_char" data={dataPie} />}
@@ -236,17 +237,9 @@ export const PDfDownload: React.FC = () => {
       </div>
 
 
-      <Modal visible={isModalOpen} okText="Download" onOk={()=>{createPDF();handleOk()}} onCancel={handleCancel} >
-        <div style={{ backgroundColor: "white", padding: "8px", height: "50vh" }}>
-          {selectedPaperData && Object.values(selectedPaperData)?.map(i => (
-            <div id="pdf" key={i.email} style={{ color: "black" }}>
-              {i.email} : {i.workfor},{i.jobtitle}
-            </div>
-          ))}
+      <DownloadPdfModal isModalOpen={isModalOpen} createPDF={createPDF} handleOk={handleOk} handleCancel={handleCancel} selectedPaperData={selectedPaperData} />
 
 
-        </div>
-      </Modal>
     </div>
   );
 };
