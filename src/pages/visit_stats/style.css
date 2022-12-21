@@ -5,13 +5,14 @@
 
 .visitPieBox {
     width: 55%;
+    /* border-right: 1px solid gray; */
 }
 
 .visitTextBox {
     width: 100%;
-    border: 1px solid gray;
+    border-top: 1px solid gray;
     padding: 24px;
-    border-radius: 8px 8px 0 0;
+    /* border-radius: 8px 8px 0 0; */
     height: 300px;
     overflow-y: scroll;
 
@@ -20,16 +21,21 @@
 .rightColBox{
     padding-top: 16px;
     width: 30%;
+    height: 100%;
+    /* border-right: 1px solid gray;
+    border-left: 1px solid gray; */
+    padding: 16px;
 }
 
 .totalTextBox {
     display: flex;
     justify-content: space-between;
     padding: 24px;
-    font-size: 1.8vw;
-    border: 1px solid gray;
-    border-radius: 0 0 8px 8px;
-    background-color: rgb(0, 255, 167);
+    font-size: 1.5vw;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    /* border-radius: 0 0 8px 8px; */
+    /* background-color: rgb(0, 255, 167); */
     color: black !important;
     font-weight: bold;
 }
@@ -64,8 +70,9 @@
         justify-content: space-between;
         padding: 12px;
         font-size: 16px;
-        border: 1px solid gray;
-        border-radius: 0 0 8px 8px
+        border-top: 1px solid gray;
+        border-bottom: 1px solid gray;
+        /* border-radius: 0 0 8px 8px */
     }
 
 

@@ -102,7 +102,7 @@ export default function VisitStats() {
         </div> 
         <div className="totalTextBox" >
 
-        Total {selectedFilter} : <span>{sum}</span>
+        Total {selectedFilter === "eventCount" ? "Page Views" : " Unique Visitors"} : <span>{sum}</span>
         </div>
         </div>
         
