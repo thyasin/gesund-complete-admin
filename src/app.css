@@ -27,19 +27,11 @@ body::-webkit-scrollbar {
     width: 0.5em;
   }
    
-  *::-webkit-scrollbar-track {
-    /* box-shadow: inset 0 0 6px rgba(32, 26, 26, 0.3);
-    border-radius: 8px; */
-  }
-   
   *::-webkit-scrollbar-thumb {
     border-radius: 5em;
     background-color: #262626;
   }
   
-  
-  
-
 .ant-form-item-control-input-content span {
     color: black !important;
 }
@@ -208,7 +200,6 @@ span.ant-typography {
 
 .ant-btn {
     background-color: rgba(0, 255, 167);
-    border-color: rgba(0, 255, 167);
     color: black;
 }
 
@@ -230,10 +221,6 @@ span.ant-typography {
 
 .ant-btn::after {
     background-color: rgba(0, 255, 167);
-}
-
-.ant-checkbox-wrapper {
-   
 }
 
 .ant-input:focus {

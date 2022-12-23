@@ -12,7 +12,8 @@
     column-width: 40px;
     height: 80px !important;
     max-width: 100px;
-    text-overflow: ellipsis;    
+    text-overflow: ellipsis;   
+    text-align: left; 
   }
  
   #table tr:nth-child(even) {
@@ -57,12 +58,22 @@
 
   .ant-btn.ant-btn-primary {
     background-color: rgba(72,41,163,255);
+    border-color: rgba(72,41,163,255);
     color: white;
+  }
+
+  .ant-btn.ant-btn-primary:hover {
+    background-color: #5a3eac;
+    border-color: #5a3eac;
   }
 
   .ant-btn.ant-btn-default {
     background-color: grey;
     font-weight: bold;
+  }
+
+  .ant-btn.ant-btn-primary svg {
+    color: white;
   }
  
 .ant-modal-close-x svg {
@@ -71,7 +82,8 @@
 }
 
 .ant-modal-close-x svg:hover {
-  color:white;
+  color: #5a3eac;
+  
 }
 
 .ant-select-selector {
