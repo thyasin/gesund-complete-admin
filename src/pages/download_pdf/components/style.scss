@@ -2,18 +2,26 @@
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
-
+    background-color: white;
   }
   
   #table td, #table th {
     border: 1px solid #ddd;
     padding: 8px;
     font-size: 10px;
+    column-width: 40px;
+    height: 80px !important;
+    max-width: 100px;
+    text-overflow: ellipsis;    
+  }
+ 
+  #table tr:nth-child(even) {
+    background-color: #f2f2f2;
   }
   
-  #table tr:nth-child(even){background-color: #f2f2f2;}
-  
-  #table tr:hover {background-color: #ddd;}
+  #table tr:hover {
+    background-color: #ddd;
+  }
   
   #table th {
     padding-top: 12px;
@@ -23,18 +31,76 @@
     color: white;
   }
 
+  #table p {
+    width: 200px;
+    color: black;
+  }
+
+  #pdf {
+    background-color: white;
+    padding: 8px;
+    width: 842px;
+    height: auto;
+  }
+
+  .filterhead {
+    justify-content: center;
+    display: flex;
+  }
+
+  .subfilt {
+    border-top: 2px solid gray;
+    padding: 5px;
+  }
+
+  .ant-btn.ant-btn-primary {
+    background-color: rgba(72,41,163,255);
+    color: white;
+  }
+
+  .ant-btn.ant-btn-default {
+    background-color: grey;
+    font-weight: bold;
+  }
+ 
+.ant-modal-close-x svg {
+  background-color: transparent;
+  color: rgba(72,41,163,255);
+}
+
+.ant-modal-close-x svg:hover {
+  color:white;
+}
+
+.ant-select-selector {
+  display: block;
+  padding-right: 50px;
+}
+
+.ant-select.ant-select-multiple.ant-select-show-search {
+  display: block;
+  padding: 5px;
+  width: fit-content;
+  min-width: 150px;
+}
+
 
   .DownloadPdfModal{
-    width: 1000px !important;
-    height: 600px !important;
+    width: 900px !important;
+    height: auto;
 
       .ant-modal-content{
-        height: 500px !important;
       }
 
       .ant-modal-body{
-        padding-top: 100px;
+        padding-top: 50px;
         height: 90%;
+        overflow-y: scroll;
+
+        .ant-checkbox-wrapper {
+          padding-right: 3px;
+          padding-bottom: 5px;
+        }
       }
       .ant-modal-footer{
         height: 10%;

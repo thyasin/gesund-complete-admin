@@ -19,16 +19,26 @@ import { useThemeSwitcher } from "react-css-theme-switcher";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import DownloadPdfModal from "./components/DownloadPdfModal";
+import autoTable from 'jspdf-autotable'
 
 export const PDfDownload: React.FC = () => {
 
   const createPDF = async () => {
     const pdf = new jsPDF("landscape", "pt", "a4");
-    const data = await document.getElementById("pdf");
-    //@ts-ignore
-    pdf.html(data).then(() => {
-      pdf.save("shipping_label.pdf");
-    });
+    autoTable(pdf, { html: '#table', 
+    // styles: { fillColor: [255, 0, 0] },
+    headStyles: {fillColor: [173, 216, 230]},
+    showHead: "everyPage",
+    useCss: true,
+    columnStyles: { 0: { halign: 'center', fillColor: [0, 255, 0] } }, // Cells in first column centered and green
+    margin: { top: 10 }, })
+    
+    
+    // const data = await document.getElementById("pdf");
+    // //@ts-ignore
+    // pdf.html(data).then(() => {
+       pdf.save("export_pdf_info.pdf");
+    // });
   };
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -192,20 +202,20 @@ export const PDfDownload: React.FC = () => {
         label: 'Country',
         data: selectedPaperData && sortedPieData.map(i => { return (Object.values(i)) }).slice(0, 6),
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
+          'rgba(255,206,48,255)',
+          'rgba(69,174,179,255)',
+          'rgba(242,101,28,255)',
+          'rgba(202,28,39,255)',
+          'rgba(151,31,123,255)',
+          'rgba(35,108,78,255)',
         ],
         borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)',
+          'rgba(255,206,48,255)',
+          'rgba(69,174,179,255)',
+          'rgba(242,101,28,255)',
+          'rgba(202,28,39,255)',
+          'rgba(151,31,123,255)',
+          'rgba(35,108,78,255)',
         ],
         borderWidth: 1,
         radius: "70%",
@@ -218,7 +228,7 @@ export const PDfDownload: React.FC = () => {
     <div>
       <div>
         {selectDataForPapers && <Select className="select_btn" allowClear placeholder="Select a paper" defaultValue={selectDataForPapers[0]?.value} options={selectDataForPapers} onChange={(e) => setSelectedPaper(e)} />}
-        <Button type="primary" style={{ backgroundColor: "darkGray", borderColor: "darkGray" }} onClick={showModal} icon={<DownloadOutlined />}>
+        <Button type="primary" className="pdfexpbtn" onClick={showModal} icon={<DownloadOutlined />}>
           Export Report Pdf
         </Button>
       </div>

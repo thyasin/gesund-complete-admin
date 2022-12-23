@@ -56,18 +56,21 @@ console.log(filteredData)
                 //Filter
                 (<div>
                     <div>
-                        <Checkbox defaultChecked onChange={(e) => setTableCols({ ...tableCols, firstname: e.target.checked })} >firstname</Checkbox>
-                        <Checkbox defaultChecked onChange={(e) => setTableCols({ ...tableCols, lastname: e.target.checked })} >lastname</Checkbox>
-                        <Checkbox defaultChecked onChange={(e) => setTableCols({ ...tableCols, workfor: e.target.checked })} >workfor</Checkbox>
-                        <Checkbox defaultChecked onChange={(e) => setTableCols({ ...tableCols, jobtitle: e.target.checked })} >jobtitle</Checkbox>
-                        <Checkbox defaultChecked onChange={(e) => setTableCols({ ...tableCols, country: e.target.checked })} >country</Checkbox>
-                        <Checkbox defaultChecked onChange={(e) => setTableCols({ ...tableCols, role: e.target.checked })} >role</Checkbox>
+                        <h2 className='filterhead'>Filter Options</h2>
+                        <p className='subfilt'>All information options are selected by default. Please deselect the information you don't need or don't want to see.</p>
+                        <Checkbox defaultChecked onChange={(e) => setTableCols({ ...tableCols, firstname: e.target.checked })} >First Name</Checkbox>
+                        <Checkbox defaultChecked onChange={(e) => setTableCols({ ...tableCols, lastname: e.target.checked })} >Last Name</Checkbox>
+                        <Checkbox defaultChecked onChange={(e) => setTableCols({ ...tableCols, workfor: e.target.checked })} >Work For</Checkbox>
+                        <Checkbox defaultChecked onChange={(e) => setTableCols({ ...tableCols, jobtitle: e.target.checked })} >Job Title</Checkbox>
+                        <Checkbox defaultChecked onChange={(e) => setTableCols({ ...tableCols, country: e.target.checked })} >Country</Checkbox>
+                        <Checkbox defaultChecked onChange={(e) => setTableCols({ ...tableCols, role: e.target.checked })} >Position</Checkbox>
                     </div>
                     <div>
-
-                        {tableCols.workfor ? <Select mode="multiple" options={workforOptions.map(renderList)} onChange={(e) => setFilterOptions({ ...filterOptions, workfor: e })} /> : null}
-                        {tableCols.country ? <Select mode="multiple" options={countryOptions.map(renderList)} onChange={(e) => setFilterOptions({ ...filterOptions, country: e })} /> : null}
-                        {tableCols.role ? <Select mode="multiple" options={roleOptions.map(renderList)} onChange={(e) => setFilterOptions({ ...filterOptions, role: e })} /> : null}
+                        <p className='subfilt'>You can choose the pre-filled selectable options if you want to have more detailed results</p>
+                        {tableCols.workfor ? <Select mode="multiple" placeholder={"Work for options"} options={workforOptions.map(renderList)} onChange={(e) => setFilterOptions({ ...filterOptions, workfor: e })} /> : null}
+                        {tableCols.country ? <Select mode="multiple" placeholder={"Country"} options={countryOptions.map(renderList)} onChange={(e) => setFilterOptions({ ...filterOptions, country: e })} /> : null}
+                        {tableCols.role ? <Select mode="multiple" placeholder={"Position"} options={roleOptions.map(renderList)} onChange={(e) => setFilterOptions({ ...filterOptions, role: e })} /> : null}
+                        <p className='subfilt'></p>
                     </div>
 
 
@@ -79,20 +82,23 @@ console.log(filteredData)
 
 
 
-                : (<div id="pdf" style={{ backgroundColor: "red", padding: "8px", width: "595px" }}>
+                : (<div id="pdf" >
                     <table id="table" >
-                        <tr style={{ color: "black" }}>
-                            <th>email</th>
-                            {tableCols.firstname && <th>firstname</th>}
-                            {tableCols.lastname && <th>lastname</th>}
-                            {tableCols.country && <th>country</th>}
-                            {tableCols.jobtitle && <th>jobtitle</th>}
-                            {tableCols.role && <th>role</th>}
-                            {tableCols.workfor && <th>workfor</th>}
-                            <th>date</th>
-                            <th>paper name</th>
-                        </tr>
+                        <thead style={{ color: "black" }}>
+                            <tr>
+                            <th>Email</th>
+                            {tableCols.firstname && <th>First Name</th>}
+                            {tableCols.lastname && <th>Last Name</th>}
+                            {tableCols.country && <th>Country</th>}
+                            {tableCols.jobtitle && <th>Job Title</th>}
+                            {tableCols.role && <th>Position</th>}
+                            {tableCols.workfor && <th>Work For</th>}
+                            <th>Date</th>
+                            <th>Paper Name</th>
+                            </tr>
+                        </thead>
                         {filteredData?.length !== 0 ? filteredData?.map((i: any) =>(
+                            
                             <tr style={{ color: "black" }}>
                                 <td>{i.email}</td>
                                 {tableCols.firstname && <td>{i.firstname}</td>}
