@@ -49,14 +49,14 @@ export default function DownloadPdfModal({ isModalOpen, createPDF, handleOk, han
     (filterOptions.role.length === 0 ? 1 : filterOptions.role.some(item=>item=== i.role) ) )
 console.log(filteredData)
     return (
-
-        <Modal className='DownloadPdfModal' visible={isModalOpen} okText={isSkipped ? "Download" : "Apply"} onOk={isSkipped ? () => { createPDF(); handleOk() } : () => { setIsSkipped(true) }} onCancel={() => { handleCancel(); setIsSkipped(false); setFilterOptions(initialFilterOptions); setTableCols(initialTableCols) }} >
+        
+        <Modal className='DownloadPdfModal' title="Filter Options" visible={isModalOpen} okText={isSkipped ? "Download" : "Apply"} onOk={isSkipped ? () => { createPDF(); handleOk() } : () => { setIsSkipped(true) }} onCancel={() => { handleCancel(); setIsSkipped(false); setFilterOptions(initialFilterOptions); setTableCols(initialTableCols) }} >
+            
             {!isSkipped ?
 
                 //Filter
                 (<div>
                     <div>
-                        <h2 className='filterhead'>Filter Options</h2>
                         <p className='subfilt'>All information options are selected by default. Please deselect the information you don't need or don't want to see.</p>
                         <Checkbox defaultChecked onChange={(e) => setTableCols({ ...tableCols, firstname: e.target.checked })} >First Name</Checkbox>
                         <Checkbox defaultChecked onChange={(e) => setTableCols({ ...tableCols, lastname: e.target.checked })} >Last Name</Checkbox>

@@ -50,7 +50,9 @@
 
   .subfilt {
     border-top: 2px solid gray;
-    padding: 5px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+     margin-top: 20px;
   }
 
   .ant-btn.ant-btn-primary {
@@ -89,7 +91,9 @@
     width: 900px !important;
     height: auto;
 
-      .ant-modal-content{
+      .ant-modal-title {
+       text-align: center;
+       font-size: 20px;
       }
 
       .ant-modal-body{
