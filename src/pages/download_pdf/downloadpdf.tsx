@@ -171,6 +171,9 @@ export const PDfDownload: React.FC = () => {
 
   const dataChart = {
     labels,
+    options: {
+      responsive: true
+    },
     datasets: [
       {
         label: 'work For',
@@ -197,6 +200,9 @@ export const PDfDownload: React.FC = () => {
 
   const dataPie = {
     labels: selectedPaperData && sortedPieData.map(i => { return (Object.keys(i)) }).slice(0, 6),
+    options:  {
+      responsive: true
+    },
     datasets: [
       {
         label: 'Country',

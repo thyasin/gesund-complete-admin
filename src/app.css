@@ -33,7 +33,7 @@ body::-webkit-scrollbar {
   }
   
 .ant-form-item-control-input-content span {
-    color: black !important;
+    color: white !important;
 }
 
 .ant-card-body:focus {
@@ -230,13 +230,21 @@ span.ant-typography {
 .ant-input-focused {
     border-color: black !important;
 }
+#email::-webkit-input-placeholder {
+    color: gray;
+} 
 
 .ant-form.ant-form-vertical.ant-form-hide-required-mark a {
     color: black !important;
 }
 
 .ant-btn.ant-btn-primary.ant-btn-lg.ant-btn-block {
-    background-color: rgba(0, 255, 167);
+    background-color: rgba(72,41,163,255);
+    background-color: rgba(72,41,163,255);
+}
+
+.ant-btn.ant-btn-primary.ant-btn-lg.ant-btn-block:hover {
+    background-color: #5a3eac;
 }
 
 span.ant-btn.ant-btn-primary.ant-btn-lg.ant-btn-block {

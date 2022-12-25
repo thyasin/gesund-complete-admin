@@ -57,7 +57,7 @@ console.log(filteredData)
                 //Filter
                 (<div>
                     <div>
-                        <h2>Filter Options</h2>
+                        <h2 className="filt-opt">Filter Options</h2>
                         <p className='subfilt'>All information options are selected by default. Please deselect the information you don't need or don't want to see.</p>
                         <Checkbox defaultChecked onChange={(e) => setTableCols({ ...tableCols, firstname: e.target.checked })} >First Name</Checkbox>
                         <Checkbox defaultChecked onChange={(e) => setTableCols({ ...tableCols, lastname: e.target.checked })} >Last Name</Checkbox>

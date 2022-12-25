@@ -98,8 +98,16 @@
   min-width: 150px;
 }
 
+.ant-switch.ant-switch-checked:hover {
+  background-color: #5a3eac;
+}
 
-  .DownloadPdfModal{
+.main.fade-in button.ant-switch:hover {
+  background-color: #5a3eac;
+  background-image: none;
+}
+ 
+.DownloadPdfModal{
     width: 900px !important;
     height: auto;
 
@@ -109,7 +117,7 @@
       }
 
       .ant-modal-body{
-        padding-top: 50px;
+        // padding-top: 50px;
         height: 90%;
         overflow-y: scroll;
 
