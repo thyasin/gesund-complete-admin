@@ -2,8 +2,11 @@ import { useLayoutEffect } from "react";
 import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
+import useDimension from "pages/download_pdf/hooks/useDimension";
 
 export default function BarChart({barChartData}:any) {
+  const {isWidthSmall} = useDimension()
+
   useLayoutEffect(() => {
     var root = am5.Root.new("chartdiv2");
 
@@ -41,11 +44,13 @@ export default function BarChart({barChartData}:any) {
     var xAxis = chart.xAxes.push(
       am5xy.CategoryAxis.new(root, {
         maxDeviation: 0.3,
-        categoryField: "country",
+        categoryField: "workfor",
         renderer: xRenderer,
         tooltip: am5.Tooltip.new(root, {}),
       })
     );
+
+    
 
     var yAxis = chart.yAxes.push(
       am5xy.ValueAxis.new(root, {
@@ -53,6 +58,12 @@ export default function BarChart({barChartData}:any) {
         renderer: am5xy.AxisRendererY.new(root, {}),
       })
     );
+
+    yAxis.get("renderer").labels.template.setAll({
+      oversizedBehavior: "truncate",
+      maxWidth: 20
+    });
+    
 
     // Create series
     // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
@@ -63,7 +74,7 @@ export default function BarChart({barChartData}:any) {
         yAxis: yAxis,
         valueYField: "value",
         sequencedInterpolation: true,
-        categoryXField: "country",
+        categoryXField: "workfor",
         tooltip: am5.Tooltip.new(root, {
           labelText: "{valueY}",
         }),
@@ -88,7 +99,7 @@ export default function BarChart({barChartData}:any) {
     );
 
     const barData = Object.keys(barChartData)?.map(i=>{
-        return ({country:i,value:barChartData[i]})
+        return ({workfor:i,value:barChartData[i]})
     })
 
     // Set data
@@ -101,12 +112,13 @@ export default function BarChart({barChartData}:any) {
     // https://www.amcharts.com/docs/v5/concepts/animations/
     series.appear(1000);
     chart.appear(1000, 100);
+    if(isWidthSmall) xAxis.hide()
     return () => root.dispose();
   }, [barChartData]);
 
   return (
     <>
-      <div id="chartdiv2" style={{ width: "100%", height: "1000px" }} />
+      <div id="chartdiv2" style={isWidthSmall ? {width:"80%",height:"300px"} : { width: "100%", height: "1000px" }} />
     </>
   );
 }

@@ -97,14 +97,17 @@ export const PDfDownload: React.FC = () => {
   
 
   return (
-    <div>
+    <div >
       <div>
         {selectDataForPapers && <Select className="select_btn" allowClear placeholder="Select a paper" defaultValue={selectDataForPapers[0]?.value} options={selectDataForPapers} onChange={(e) => setSelectedPaper(e)} />}
         <Button type="primary" className="pdfexpbtn" onClick={showModal} icon={<DownloadOutlined />}>
           Export Report Pdf
         </Button>
       </div>
+      <div style={{width:"100%",display:"flex",alignItems:"center",justifyContent:"center"}}>
+
 <BarChart barChartData={obj}/>
+      </div>
       {/* <Bar className="bar_char" options={options} data={dataChart} /> */}
       <div className="chart_gen" >
         <div className="chart_chi" >

@@ -113,6 +113,8 @@ body::-webkit-scrollbar {
 .chart_chi {
     width: 50%;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 ::selection {
@@ -331,7 +333,7 @@ h3.ant-typography {
     }
 
     .chart_chi {
-        width: 75%;
+        width: 100%;
         display: flex;
     }
 
