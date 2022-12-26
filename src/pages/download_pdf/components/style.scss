@@ -102,6 +102,10 @@
   background-color: #5a3eac;
 }
 
+.ant-switch.ant-switch-checked {
+  background-color: rgba(48,48,48,255);
+}
+
 .main.fade-in button.ant-switch:hover {
   background-color: #5a3eac;
   background-image: none;
