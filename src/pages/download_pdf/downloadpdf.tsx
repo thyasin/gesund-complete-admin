@@ -1,44 +1,29 @@
 import { useMany, useOne } from "@pankod/refine-core";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-  ArcElement
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
-import { Pie } from 'react-chartjs-2';
 import React, { useState, useEffect } from 'react'
-import { Button, Modal, Select } from "@pankod/refine-antd";
+import { Button, Select } from "@pankod/refine-antd";
 import useDimension from "./hooks/useDimension";
 import { DownloadOutlined } from "@ant-design/icons";
 import { useThemeSwitcher } from "react-css-theme-switcher";
 import { jsPDF } from "jspdf";
-import html2canvas from "html2canvas";
 import DownloadPdfModal from "./components/DownloadPdfModal";
 import autoTable from 'jspdf-autotable'
+import GeoChart from "components/chart/GeoChart";
+import BarChart from "components/chart/BarChart";
+
 
 export const PDfDownload: React.FC = () => {
 
   const createPDF = async () => {
     const pdf = new jsPDF("landscape", "pt", "a4");
     autoTable(pdf, { html: '#table', 
-    // styles: { fillColor: [255, 0, 0] },
     headStyles: {fillColor: [173, 216, 230]},
     showHead: "everyPage",
     useCss: true,
     columnStyles: { 0: { halign: 'center', fillColor: [0, 255, 0] } }, // Cells in first column centered and green
     margin: { top: 10 }, })
     
-    
-    // const data = await document.getElementById("pdf");
-    // //@ts-ignore
-    // pdf.html(data).then(() => {
        pdf.save("export_pdf_info.pdf");
-    // });
+
   };
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -72,25 +57,25 @@ export const PDfDownload: React.FC = () => {
 
 
   const obj = {
-    "Al / Machine Learning": [],
-    "Biotechnology": [],
-    "Cloud Computing": [],
-    "Contract Research Organisation": [],
-    "Data Analytics Provider": [],
-    "Data Storage Solutions": [],
-    "Diagnostic Equipment / Services": [],
-    "Digital PCR (polymerase chain reaction)": [],
-    "Gene Sequencing Platforms / Services": [],
-    "Government (incl regulatory, economic development)": [],
-    "High Performance Computing/Data Management Health System": [],
-    "Informatics": [],
-    "Investor": [],
-    "Medical Device": [],
-    "Pharmaceutical": [],
-    "Professional Advisory / Legal / Consultancy": [],
-    "Research Institute": [],
-    "University or other Academia": [],
-    "Other": []
+    "Al / Machine Learning": 0,
+    "Biotechnology": 0,
+    "Cloud Computing": 0,
+    "Contract Research Organisation": 0,
+    "Data Analytics Provider": 0,
+    "Data Storage Solutions": 0,
+    "Diagnostic Equipment / Services": 0,
+    "Digital PCR (polymerase chain reaction)": 0,
+    "Gene Sequencing Platforms / Services": 0,
+    "Government (incl regulatory, economic development)": 0,
+    "High Performance Computing/Data Management Health System": 0,
+    "Informatics": 0,
+    "Investor": 0,
+    "Medical Device": 0,
+    "Pharmaceutical": 0,
+    "Professional Advisory / Legal / Consultancy": 0,
+    "Research Institute": 0,
+    "University or other Academia": 0,
+    "Other": 0
   }
   const pdfDownloadFormData = useOne({
     resource: selectedPaper,
@@ -99,136 +84,17 @@ export const PDfDownload: React.FC = () => {
   })
 
   const selectedPaperData = pdfDownloadFormData?.data
-  // @ts-ignore
-  selectedPaperData && Object.values(selectedPaperData)?.map(i => obj[i.workfor].push(i))
+  
+  selectedPaperData && Object.values(selectedPaperData)?.map(i => (obj as any)[i.workfor]=(obj as any)[i.workfor]+1)
 
 
-  ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend,
-    ArcElement
-  );
+  const geoChartData: any = {}
 
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top' as const,
-      },
-      title: {
-        display: true,
-        text: selectedPaper,
-        color: "#696969",
-      },
-    },
-    scales: {
-      x: {
-        display: !isWidthSmall,
-        ticks: {
-          color: currentTheme === "light" ? "black" : "gray"
-        },
-        grid: {
-          color: currentTheme === "light" ? "lightgray" : "gray"
-        },
-      },
-      y: {
-        ticks: {
-          color: currentTheme === "light" ? "black" : "gray"
-        },
-        grid: {
-          color: currentTheme === "light" ? "lightgray" : "gray"
-        },
-      },
-    },
-  };
-
-
-  const labels = [
-    "Al / Machine Learning",
-    "Biotechnology",
-    "Cloud Computing",
-    "Contract Research Organisation",
-    "Data Analytics Provider",
-    "Data Storage Solutions",
-    "Diagnostic Equipment / Services",
-    "Digital PCR (polymerase chain reaction)",
-    "Gene Sequencing Platforms / Services",
-    "Government (incl regulatory, economic development)",
-    "High Performance Computing/Data Management Health System",
-    "Informatics",
-    "Investor",
-    "Medical Device",
-    "Pharmaceutical",
-    "Professional Advisory / Legal / Consultancy",
-    "Research Institute",
-    "University or other Academia",
-    "Other"
-  ];
-
-  const dataChart = {
-    labels,
-    options: {
-      responsive: true
-    },
-    datasets: [
-      {
-        label: 'work For',
-        data: Object.values(obj).map(i => i.length),
-        backgroundColor: "rgba(0, 255, 167)",
-      }
-    ],
-  };
-
-  const objPie: any = {}
-
-  selectedPaperData && Object.values(selectedPaperData).map((i: any) => {
-    if (objPie[i.country]) objPie[i.country] = [...objPie[i.country], i.country]
-    else objPie[i.country] = [i.country]
+  selectedPaperData && Object.values(selectedPaperData).map((i) => {
+    if (geoChartData[i.country]) geoChartData[i.country] = geoChartData[i.country] + 1
+    else geoChartData[i.country] = 1
   })
-
-
-  const filteredPieData = Object.values(objPie).map((i: any) => {
-    return ({ [i[0]]: i.length })
-  })
-  const sortedPieData = filteredPieData.sort((a, b) => Object.values(b)[0] - Object.values(a)[0])
-
-
-
-  const dataPie = {
-    labels: selectedPaperData && sortedPieData.map(i => { return (Object.keys(i)) }).slice(0, 6),
-    options:  {
-      responsive: true
-    },
-    datasets: [
-      {
-        label: 'Country',
-        data: selectedPaperData && sortedPieData.map(i => { return (Object.values(i)) }).slice(0, 6),
-        backgroundColor: [
-          'rgba(255,206,48,255)',
-          'rgba(69,174,179,255)',
-          'rgba(242,101,28,255)',
-          'rgba(202,28,39,255)',
-          'rgba(151,31,123,255)',
-          'rgba(35,108,78,255)',
-        ],
-        borderColor: [
-          'rgba(255,206,48,255)',
-          'rgba(69,174,179,255)',
-          'rgba(242,101,28,255)',
-          'rgba(202,28,39,255)',
-          'rgba(151,31,123,255)',
-          'rgba(35,108,78,255)',
-        ],
-        borderWidth: 1,
-        radius: "70%",
-      },
-    ],
-    align: "center",
-  };
+  
 
   return (
     <div>
@@ -238,12 +104,14 @@ export const PDfDownload: React.FC = () => {
           Export Report Pdf
         </Button>
       </div>
-
-      <Bar className="bar_char" options={options} data={dataChart} />
+<BarChart barChartData={obj}/>
+      {/* <Bar className="bar_char" options={options} data={dataChart} /> */}
       <div className="chart_gen" >
         <div className="chart_chi" >
-          {selectedPaper && <Pie className="pie_char" data={dataPie} />}
+          <GeoChart data={geoChartData} />
+          {/* {selectedPaper && <Pie className="pie_char" data={dataPie} />} */}
         </div>
+        
         <div className="top" >
           {selectedPaperData && <span className="total" ><DownloadOutlined /> Total Download : <b>{(Object.values(selectedPaperData)).length}</b></span>}
         </div>

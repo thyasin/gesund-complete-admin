@@ -1,32 +1,13 @@
 import { useList } from "@pankod/refine-core";
-import { Pie } from "react-chartjs-2";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-  ArcElement
-} from 'chart.js';
 import { Select } from "@pankod/refine-antd";
 import { Options } from "./options";
 import { useState } from "react";
 import "./style.css"
 import { OptionsTimeRange } from "./optionsTimeRange";
+import GeoChart from "components/chart/GeoChart";
 
 export default function VisitStats() {
 
-  ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend,
-    ArcElement
-  );
 
   const [ selectedFilter,setSelectedFilter] = useState("eventCount")
   const [ selectedTimeRange,setSelectedTimeRange] = useState("yesterday")
@@ -42,38 +23,10 @@ export default function VisitStats() {
     return total + +(num.metricValues[0]?.value);
   }
 
-
-  const dataPie = {
-    labels: data?.rows?.map((i: any) => i.dimensionValues[0].value).slice(0,6),
-    datasets: [
-      {
-        label: 'Country',
-        data: data?.rows?.map((i: any) => i.metricValues[0].value).slice(0,6),
-        backgroundColor: [
-          'rgba(96,189,104,255)',
-          'rgba(93,165,218,255)',
-          'rgba(241,124,176,255)',
-          'rgba(177,45,32,255)',
-          'rgba(253,210,0,255)',
-          'rgba(39,107,123,255)',              
-        ],
-        borderColor: [
-          'rgba(96,189,104,255)',
-          'rgba(93,165,218,255)',
-          'rgba(241,124,176,255)',
-          'rgba(177,45,32,255)',
-          'rgba(253,210,0,255)',
-          'rgba(39,107,123,255)',
-        ],
-        borderWidth: 1,
-        radius: "70%",
-      },
-    ],
-    align: "center",
-  };
-
-
-
+const dataPie = {}
+data?.rows?.map((i: any) =>{
+   (dataPie as any)[i.dimensionValues[0].value] = +(i.metricValues[0].value)}
+  )
 
   return (
     <div>
@@ -84,8 +37,7 @@ export default function VisitStats() {
       </div>
       {data ? <div style={{ display: "flex" }} className="mainVisitBox">
         <div className="visitPieBox">
-
-          <Pie data={dataPie} className="visitPieChart" style={{ width: "100%", height: "auto" }} />
+        <GeoChart data={dataPie} />
         </div>
         <div className="rightColBox">
           <div className="visitTextBox">
