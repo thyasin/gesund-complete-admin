@@ -42,6 +42,7 @@
     padding: 8px;
     width: 842px;
     height: auto;
+    margin-left: 5px;
   }
 
   .filterhead {
@@ -67,9 +68,10 @@
     border-color: #5a3eac;
   }
 
-  .ant-btn.ant-btn-default {
-    background-color: grey;
-    font-weight: bold;
+  .ant-btn.ant-btn-default:hover {
+    background-color: #5a3eac;
+    color: white;
+    border-color: #5a3eac;
   }
 
   .ant-btn.ant-btn-primary svg {
