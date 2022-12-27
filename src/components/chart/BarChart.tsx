@@ -59,10 +59,6 @@ export default function BarChart({barChartData}:any) {
       })
     );
 
-    yAxis.get("renderer").labels.template.setAll({
-      oversizedBehavior: "truncate",
-      maxWidth: 20
-    });
     
 
     // Create series

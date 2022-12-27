@@ -90,8 +90,8 @@ export default function GeoChart({data}:any) {
     bubbleSeries.set("heatRules", [
       {
         target: circleTemplate,
-        min: 3,
-        max: 30,
+        min: 4,
+        max: 12,
         key: "radius",
         dataField: "value",
       },
@@ -123,17 +123,21 @@ export default function GeoChart({data}:any) {
       })
     );
 
-    cont.children.push(
-      am5.Label.new(root, {
-        centerY: am5.p50,
-        text: "Map",
-      })
-    );
+    // cont.children.push(
+    //   am5.Label.new(root, {
+    //     centerY: 35,
+    //     centerX: 0,
+    //     text: "Map",
+    //   })
+    // );
 
     var switchButton = cont.children.push(
       am5.Button.new(root, {
         themeTags: ["switch"],
-        centerY: am5.p50,
+        cursorOverStyle:"pointer",
+        draggable:true,
+        centerY: 35,
+        marginLeft: -10,
         icon: am5.Circle.new(root, {
           themeTags: ["icon"],
         }),
@@ -150,12 +154,12 @@ export default function GeoChart({data}:any) {
       }
     });
 
-    cont.children.push(
-      am5.Label.new(root, {
-        centerY: am5.p50,
-        text: "Globe",
-      })
-    );
+    // cont.children.push(
+    //   am5.Label.new(root, {
+    //     centerY: 35,
+    //     text: "Globe",
+    //   })
+    // );
 
     // Make stuff animate on load
     chart.appear(1000, 100);
