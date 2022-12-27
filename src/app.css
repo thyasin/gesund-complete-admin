@@ -57,7 +57,7 @@ body::-webkit-scrollbar {
     align-items: center;
     padding: 0px 24px;
     height: 64px;
-    background-color: #fff;
+    background-color: #fff; 
 }
 
 .logbtn {
@@ -187,10 +187,6 @@ span.ant-typography {
     color: black;
 }
 
-.ant-menu-title-content a::before:hover {
-    background-color: rgba(0, 255, 167);
-}
-
 .ant-card {
     background-color: #f2f2f2 !important;
     color: black;
@@ -204,6 +200,7 @@ span.ant-typography {
     background-color: rgba(0, 255, 167);
     color: black;
 }
+
 
 .head-items {
     padding: 10px 10px;
@@ -222,13 +219,13 @@ span.ant-typography {
     border-color: rgb(72, 41, 163);
 }
 
-.ant-btn::before {
+/* .ant-btn::before {
     background-color: rgba(0, 255, 167);
 }
 
 .ant-btn::after {
     background-color: rgba(0, 255, 167);
-}
+} */
 
 .ant-input:focus {
     border-color: black !important;
@@ -240,13 +237,11 @@ span.ant-typography {
 #email::-webkit-input-placeholder {
     color: gray;
 }
-
 .ant-form.ant-form-vertical.ant-form-hide-required-mark a {
     color: black !important;
 }
 
 .ant-btn.ant-btn-primary.ant-btn-lg.ant-btn-block {
-    background-color: rgba(72,41,163,255);
     background-color: rgba(72,41,163,255);
 }
 
@@ -276,13 +271,13 @@ span.ant-btn.ant-btn-primary.ant-btn-lg.ant-btn-block {
     background-color: rgba(0, 255, 167) !important;
 } */
 
-.ant-select-show-arrow:hover {
+/* .ant-select-show-arrow:hover {
     border-color: rgba(0, 255, 167);
-}
+} */
 
-.select_btn:hover {
+/* .select_btn:hover {
     border-color: rgba(0, 255, 167);
-}
+} */
 
 .ant-menu-item:hover {
     background-color: #5a3eac;
