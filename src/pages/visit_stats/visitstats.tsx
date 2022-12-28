@@ -1,10 +1,11 @@
 import { useList } from "@pankod/refine-core";
-import { Select } from "@pankod/refine-antd";
+import { Select, Spin } from "@pankod/refine-antd";
 import { Options } from "./options";
 import { useState } from "react";
 import "./style.css"
 import { OptionsTimeRange } from "./optionsTimeRange";
 import GeoChart from "components/chart/GeoChart";
+import { LoadingOutlined } from "@ant-design/icons";
 
 export default function VisitStats() {
 
@@ -27,6 +28,8 @@ const dataPie = {}
 data?.rows?.map((i: any) =>{
    (dataPie as any)[i.dimensionValues[0].value] = +(i.metricValues[0].value)}
   )
+
+  const antIcon = <LoadingOutlined style={{ fontSize: 54 }} spin />;
 
   return (
     <div>
@@ -60,7 +63,7 @@ data?.rows?.map((i: any) =>{
         
 
 
-      </div> : null}
+      </div> : <div className="spinner"><Spin indicator={antIcon}/></div>}
     </div>
 
   )

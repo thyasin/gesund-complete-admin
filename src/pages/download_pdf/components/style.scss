@@ -40,7 +40,7 @@
   #pdf {
     background-color: white;
     padding: 8px;
-    // width: 842px;
+    width: 850px;
     height: auto;
   }
 
@@ -68,13 +68,12 @@
   }
 
   .ant-btn.ant-btn-default:hover {
-    background-color: #5a3eac;
+    background-color: gray;
     color: white;
-    border-color: #5a3eac;
+    border-color: gray;
   }
-
   .ant-btn.ant-btn-default {
-    background-color: lightgray;
+    background-color: rgb(85, 83, 83);
   }
 
   .ant-btn.ant-btn-primary svg {
@@ -127,9 +126,8 @@
 
       .ant-modal-body{
         // padding-top: 50px;
-        height: 90%;
-        overflow-y: scroll;
-        scrollbar-width: 10px;
+        max-height: 600px;
+        overflow-y: hidden;
         
         .ant-checkbox-wrapper {
           padding-right: 3px;

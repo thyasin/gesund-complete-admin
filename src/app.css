@@ -280,7 +280,10 @@ span.ant-btn.ant-btn-primary.ant-btn-lg.ant-btn-block {
 } */
 
 .ant-menu-item:hover {
-    background-color: #5a3eac;
+    background-color: rgba(72,41,163,255);
+}
+.ant-menu-item-selected {
+    background-color: rgba(72,41,163,255) !important;
 }
 
 .ant-typography.ant-typography-ellipsis.ant-typography-single-line.ant-typography-ellipsis-single-line {
@@ -309,10 +312,8 @@ h3.ant-typography {
 @media only screen and (max-width: 767px) {
 
     .total {
-        font-size: 12px;
-        border: 1px solid gray;
-        padding: 16px;
-        border-radius: 8px;
+        margin-top: 12px;
+        font-size: 16px;
     }
 
     .gesund_img {

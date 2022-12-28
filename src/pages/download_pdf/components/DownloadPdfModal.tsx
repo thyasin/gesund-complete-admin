@@ -35,29 +35,22 @@ export default function DownloadPdfModal({ isModalOpen, createPDF, handleOk, han
         role: true,
         workfor: true
     }
-
     const [isSkipped, setIsSkipped] = useState(false);
     const [tableCols, setTableCols] = useState<ITableCols>(initialTableCols);
     const [filterOptions, setFilterOptions] = useState<IFilterOptions>(initialFilterOptions);
     let valuesOfSelectedPaperData;
-    
     selectedPaperData && (valuesOfSelectedPaperData = [...Object.values(selectedPaperData)])
-
     const filteredData = valuesOfSelectedPaperData?.filter((i: any) =>  
     (filterOptions.workfor.length === 0 ? 1 : filterOptions.workfor.some(item=>item=== i.workfor) ) && 
     (filterOptions.country.length === 0 ? 1 : filterOptions.country.some(item=>item === i.country) ) && 
     (filterOptions.role.length === 0 ? 1 : filterOptions.role.some(item=>item=== i.role) ) )
-console.log(filteredData)
-    return (
-        
+    return (    
         <Modal className='DownloadPdfModal' title="Pdf Export" visible={isModalOpen} okText={isSkipped ? "Download" : "Apply"} onOk={isSkipped ? () => { createPDF(); handleOk() } : () => { setIsSkipped(true) }} onCancel={() => { handleCancel(); setIsSkipped(false); setFilterOptions(initialFilterOptions); setTableCols(initialTableCols) }} >
-            
             {!isSkipped ?
-
                 //Filter
                 (<div>
                     <div>
-                        <h2 className="filt-opt">Filter Options</h2>
+                        <h3 className="filt-opt">Filter Options</h3>
                         <p className='subfilt'>All information options are selected by default. Please deselect the information you don't need or don't want to see.</p>
                         <Checkbox defaultChecked onChange={(e) => setTableCols({ ...tableCols, firstname: e.target.checked })} >First Name</Checkbox>
                         <Checkbox defaultChecked onChange={(e) => setTableCols({ ...tableCols, lastname: e.target.checked })} >Last Name</Checkbox>
@@ -67,22 +60,13 @@ console.log(filteredData)
                         <Checkbox defaultChecked onChange={(e) => setTableCols({ ...tableCols, role: e.target.checked })} >Position</Checkbox>
                     </div>
                     <div>
-                        <p className='subfilt'>You can choose the pre-filled selectable options if you want to have more detailed results</p>
+                        <p className='subfilt'>You can choose the pre-filled selectable options if you want to have more detailed results.</p>
                         {tableCols.workfor ? <Select mode="multiple" placeholder={"Work for options"} options={workforOptions.map(renderList)} onChange={(e) => setFilterOptions({ ...filterOptions, workfor: e })} /> : null}
                         {tableCols.country ? <Select mode="multiple" placeholder={"Country"} options={countryOptions.map(renderList)} onChange={(e) => setFilterOptions({ ...filterOptions, country: e })} /> : null}
                         {tableCols.role ? <Select mode="multiple" placeholder={"Position"} options={roleOptions.map(renderList)} onChange={(e) => setFilterOptions({ ...filterOptions, role: e })} /> : null}
                         <p className='subfilt'></p>
                     </div>
-
-
                 </div>)
-
-
-
-
-
-
-
                 : (<div id="pdf" >
                     <table id="table" >
                         <thead style={{ color: "black" }}>
@@ -111,15 +95,8 @@ console.log(filteredData)
                                 <td>{new Date(i.date).toLocaleDateString()}</td>
                                 <td>{i.pdfFileName}</td>
                             </tr>
-
-                            // <div id="pdf" key={i.email} style={{ color: "black" }}>
-                            //   {i.email} : {i.workfor},{i.jobtitle}
-                            // </div>
                         )) : <p>No Data with this filter options</p>}
                     </table>
-
-
-
                 </div>)}
         </Modal>
     )

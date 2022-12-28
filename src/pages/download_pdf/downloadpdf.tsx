@@ -9,7 +9,7 @@ import DownloadPdfModal from "./components/DownloadPdfModal";
 import autoTable from 'jspdf-autotable'
 import GeoChart from "components/chart/GeoChart";
 import BarChart from "components/chart/BarChart";
-
+import "./style.scss"
 
 export const PDfDownload: React.FC = () => {
 
@@ -41,8 +41,8 @@ export const PDfDownload: React.FC = () => {
   };
 
   const [selectedPaper, setSelectedPaper] = useState("")
-  const { isWidthSmall } = useDimension();
-  const { currentTheme } = useThemeSwitcher();
+  // const { isWidthSmall } = useDimension();
+  // const { currentTheme } = useThemeSwitcher();
 
   const paperNames = useMany({ resource: "", ids: [] })
   const paperNamesData = paperNames.data
@@ -105,28 +105,17 @@ export const PDfDownload: React.FC = () => {
         </Button>
       </div>
       <div style={{width:"100%",display:"flex",alignItems:"center",justifyContent:"center"}}>
-
-<BarChart barChartData={obj}/>
+          <BarChart barChartData={obj}/>
       </div>
-      {/* <Bar className="bar_char" options={options} data={dataChart} /> */}
       <div className="chart_gen" >
         <div className="chart_chi" >
           <GeoChart data={geoChartData} />
-          {/* {selectedPaper && <Pie className="pie_char" data={dataPie} />} */}
         </div>
-        
         <div className="top" >
           {selectedPaperData && <span className="total" ><DownloadOutlined /> Total Download : <b>{(Object.values(selectedPaperData)).length}</b></span>}
         </div>
-
-
-
       </div>
-
-
       <DownloadPdfModal isModalOpen={isModalOpen} createPDF={createPDF} handleOk={handleOk} handleCancel={handleCancel} selectedPaperData={selectedPaperData} />
-
-
     </div>
   );
 };
