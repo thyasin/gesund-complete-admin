@@ -4,6 +4,12 @@
         width:40vw;height:20vw
 
 }
+.geoMapChart{
+width: 50vw; height: 30vw
+
+    
+
+}
 
 @media only screen and (max-width: 1200px) {
     .semiCircleChart{
@@ -16,4 +22,9 @@
 
         width:70vw;height:80vw
     }
+    .geoMapChart{
+width: 80vw; height: 200px
+        
+    }
 }
+

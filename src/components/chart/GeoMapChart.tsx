@@ -4,11 +4,10 @@ import * as am5map from "@amcharts/amcharts5/map";
 import am5geodata_worldLow from "@amcharts/amcharts5-geodata/worldLow";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import { countryID } from "pages/download_pdf/country";
-import useDimension from "pages/download_pdf/hooks/useDimension";
+import "./style.scss"
 
 export default function GeoMapChart({ chartId,data }: any) {
-  const {isWidthSmall} = useDimension()
-console.log(isWidthSmall)
+
   useLayoutEffect(() => {
     var root = am5.Root.new(chartId);
 
@@ -64,5 +63,5 @@ console.log(isWidthSmall)
     
   }, [chartId,data]);
 
-  return <div id={chartId} style={isWidthSmall ? {width: "80vw", height: "200px"} : { width: "50vw", height: "20vw" }} />;
+  return <div id={chartId} className="geoMapChart"/>;
 }

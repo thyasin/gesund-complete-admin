@@ -82,13 +82,13 @@
     width: 100%;
 }
 
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1200px) {
     .MainDashboard {
         grid-template-areas:
             "pdf"
             "user"
             "visit";
-            gap: 12px;
+            gap: 24px;
     }
 }
 
