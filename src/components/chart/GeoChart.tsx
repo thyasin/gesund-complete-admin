@@ -7,11 +7,10 @@ import { countryID } from "pages/download_pdf/country";
 import useDimension from "pages/download_pdf/hooks/useDimension";
 
 
-export default function GeoChart({data}:any) {
+export default function GeoChart({data,chartId,isWidthSmall}:any) {
 
- const {isWidthSmall} = useDimension()
   useLayoutEffect(() => {
-    var root = am5.Root.new("chartdiv");
+    var root = am5.Root.new(chartId);
 
     // Set themes
     // https://www.amcharts.com/docs/v5/concepts/themes/
@@ -165,10 +164,10 @@ export default function GeoChart({data}:any) {
     chart.appear(1000, 100);
 
     return () => root.dispose();
-  }, [data]);
+  }, [data,chartId]);
   return (
     <>
-      <div id="chartdiv" style={isWidthSmall ? {width: "80%", height: "400px"} : { width: "100%", height: "750px" }} />
+      <div id={chartId} style={isWidthSmall ? {width: "80%", height: "400px"} : { width: "100%", height: "750px" }} />
     </>
   );
 }

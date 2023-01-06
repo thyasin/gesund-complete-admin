@@ -6,12 +6,13 @@ import "./style.css"
 import { OptionsTimeRange } from "./optionsTimeRange";
 import GeoChart from "components/chart/GeoChart";
 import { LoadingOutlined } from "@ant-design/icons";
+import GeoMapChart from "components/chart/GeoMapChart";
 
-export default function VisitStats() {
+export const VisitStats: React.FC = () =>{
 
 
   const [ selectedFilter,setSelectedFilter] = useState("eventCount")
-  const [ selectedTimeRange,setSelectedTimeRange] = useState("yesterday")
+  const [ selectedTimeRange,setSelectedTimeRange] = useState("7daysAgo")
 
   const a: any = useList({ resource: JSON.stringify({startDate:selectedTimeRange,metric:selectedFilter}) });
   const data = a?.data?.data;
@@ -35,12 +36,13 @@ data?.rows?.map((i: any) =>{
     <div>
       <div style={{display:"flex", justifyContent:"flex-end"}}>
 
-    <Select placeholder="Select a filter" style={{marginRight:"6px"}} defaultValue={"yesterday"} options={OptionsTimeRange} onChange={(e)=>setSelectedTimeRange(e)}/>
+    <Select placeholder="Select a filter" style={{marginRight:"6px"}} defaultValue={"7daysAgo"} options={OptionsTimeRange} onChange={(e)=>setSelectedTimeRange(e)}/>
     <Select placeholder="Select a filter" defaultValue={"eventCount"} options={Options} onChange={(e)=>setSelectedFilter(e)}/>
       </div>
       {data ? <div style={{ display: "flex" }} className="mainVisitBox">
         <div className="visitPieBox">
-        <GeoChart data={dataPie} />
+        <GeoChart data={dataPie} chartId="geochartvisit" />
+        {/* <GeoMapChart chartId="geomapchart"/> */}
         </div>
         <div className="rightColBox">
           <div className="visitTextBox">

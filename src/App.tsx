@@ -15,8 +15,10 @@ import "./app.css";
 import { ThemeSwitcherProvider } from "react-css-theme-switcher";
 import { PDfDownload } from "pages/download_pdf";
 import { Header } from "components/layout";
-import VisitStats from "pages/visit_stats/visitstats";
+
 import { SelectOutlined } from "@ant-design/icons";
+import Dashboard from "pages/dashboard/Dashboard";
+import { VisitStats } from "pages/visit_stats";
 
 function App() {
   const currThemes = {
@@ -84,13 +86,19 @@ function App() {
       LoginPage={AuthPage}
       resources= {[
         {
+          name : "dashboard",
+          list: Dashboard,
+          icon: <img src="./dashboard.svg"/>
+        },
+        {
           name : "pdf-download",
           list: PDfDownload,
+          icon: <img src="./download.svg"/>
         },
         {
           name : "visit-stats",
           list: VisitStats,
-          icon: <SelectOutlined />
+          icon: <img src="./visit.svg"/>
         },
       ]}
       

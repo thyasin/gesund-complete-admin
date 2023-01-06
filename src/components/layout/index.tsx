@@ -18,7 +18,7 @@ export const Header: React.FC = () => {
         switcher({ theme: isChecked ? themes.dark : themes.light });
     };
     return (
-        <AntdLayout.Header className="ant-head" style={currentTheme === "light" ? {backgroundColor: "#dcdcdc", padding: "0 24px"} : {backgroundColor: "#262626", padding: "0 24px"}}
+        <AntdLayout.Header className="ant-head"
         >
             <div className="head-items">
             <img className="avatar_img" src={identity?.avatar} alt="" />
@@ -29,7 +29,7 @@ export const Header: React.FC = () => {
         </Tooltip>
         
         
-            <div className="main fade-in">
+            {/* <div className="main fade-in">
                 <Switch
                     checkedChildren="🌜"
                     unCheckedChildren="🌞"
@@ -37,7 +37,7 @@ export const Header: React.FC = () => {
                     checked={isLightMode}
                     onChange={toggleTheme}
                 />
-            </div>
+            </div> */}
         </AntdLayout.Header>
     );
 };

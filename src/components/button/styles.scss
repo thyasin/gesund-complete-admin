@@ -1,0 +1,18 @@
+.buttonMain{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 12px;
+    .text{
+        font-size: 14px;
+        font-weight: bold;
+    }
+    .icon{
+        font-size: 20px;
+        margin-left: 6px;
+    }
+
+    &:hover{
+        cursor: pointer;
+    }
+}

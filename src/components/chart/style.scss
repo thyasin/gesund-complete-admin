@@ -1,0 +1,19 @@
+.semiCircleChart{
+
+
+        width:40vw;height:20vw
+
+}
+
+@media only screen and (max-width: 1200px) {
+    .semiCircleChart{
+
+        width:65vw;height:40vw
+    }
+}
+@media only screen and (max-width: 767px) {
+    .semiCircleChart{
+
+        width:70vw;height:80vw
+    }
+}

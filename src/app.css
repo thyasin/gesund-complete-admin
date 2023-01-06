@@ -31,6 +31,11 @@ body::-webkit-scrollbar {
     border-radius: 5em;
     background-color: #262626;
   }
+  
+
+.ant-layout-sider-trigger{
+    display: none;
+}
 
 .ant-form-item-control-input-content span {
     color: white !important;
@@ -48,7 +53,7 @@ body::-webkit-scrollbar {
 
 .gesund_img {
     width: 100%;
-    padding: 12px;
+    padding: 12px 36px;
 }
 
 .ant-head {
@@ -56,8 +61,8 @@ body::-webkit-scrollbar {
     justify-content: flex-end;
     align-items: center;
     padding: 0px 24px;
-    height: 64px;
-    background-color: #fff; 
+    height: 64px; 
+    border-bottom: 1px solid #424C5D;
 }
 
 .logbtn {
@@ -111,10 +116,11 @@ body::-webkit-scrollbar {
 }
 
 .chart_chi {
-    width: 50%;
+    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 ::selection {
@@ -145,6 +151,12 @@ body::-webkit-scrollbar {
 
 .ant-layout-sider {
     background-color: #4d0547;
+}
+.ant-layout-sider{
+    border-right: 1px solid #424C5D;
+}
+.ant-menu-inline{
+    border: none !important;
 }
 
 label.ant-form-item-required {
@@ -215,8 +227,8 @@ span.ant-typography {
 }
 
 .ant-btn.ant-btn-primary:focus {
-    background-color: rgb(72, 41, 163);
-    border-color: rgb(72, 41, 163);
+    background-color: #2E3847;
+    border-color: #2E3847;
 }
 
 /* .ant-btn::before {
@@ -246,7 +258,7 @@ span.ant-typography {
 }
 
 .ant-btn.ant-btn-primary.ant-btn-lg.ant-btn-block:hover {
-    background-color: #5a3eac;
+    background-color: #2E3847;
 }
 
 span.ant-btn.ant-btn-primary.ant-btn-lg.ant-btn-block {
@@ -280,10 +292,10 @@ span.ant-btn.ant-btn-primary.ant-btn-lg.ant-btn-block {
 } */
 
 .ant-menu-item:hover {
-    background-color: rgba(72,41,163,255);
+    background-color: #2E3847;
 }
 .ant-menu-item-selected {
-    background-color: rgba(72,41,163,255) !important;
+    background-color: #2E3847 !important;
 }
 
 .ant-typography.ant-typography-ellipsis.ant-typography-single-line.ant-typography-ellipsis-single-line {
@@ -318,7 +330,7 @@ h3.ant-typography {
 
     .gesund_img {
         width: 100%;
-        padding: 6px;
+        padding: 6px 24px;
     }
 
     .select_btn {
@@ -336,6 +348,7 @@ h3.ant-typography {
     .chart_chi {
         width: 100%;
         display: flex;
+        flex-direction: column;
     }
 
     .pie_char {
