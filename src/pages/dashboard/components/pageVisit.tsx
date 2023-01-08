@@ -47,7 +47,7 @@ data?.rows?.map((i: any) =>{
                 <span>Event</span>
             </div>
           <div className="pageVisitBox">
-          {(data?.rows?.map((i: any) =>
+          {(data?.rows?.slice(0,5).map((i: any) =>
           (
             <div key={i.dimensionValues[0].value} className="pageVisitText"  >
               <span>{i.dimensionValues[0].value}</span>

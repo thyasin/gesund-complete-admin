@@ -175,7 +175,7 @@ export const PDfDownload: React.FC = ({
                     <span>{i}</span>
                     <span>{geoChartData[i]}</span>
                   </div>
-                  {selectedPaperData && <Progress percent={(geoChartData[i] / Object.values(selectedPaperData).length)* 100} showInfo={false} strokeColor="#4829A3" />}
+                  {selectedPaperData && <Progress percent={(geoChartData[i] / Object.values(selectedPaperData).length)* 100} showInfo={false} strokeColor="#fff" />}
                   {/* <div className="progressBar">
                     {selectedPaperData && <div className="progress" style={{width:`${(geoChartData[i] / Object.values(selectedPaperData).length)* 100}%`}}/>}
                   </div> */}

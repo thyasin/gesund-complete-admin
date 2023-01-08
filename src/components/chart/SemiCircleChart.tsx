@@ -7,7 +7,6 @@ import "./style.scss"
 
 export default function SemiCircleChart({chartId,data,totalDownload,isWidthSmall}:{chartId:string,data:any,totalDownload:number,isWidthSmall:boolean}) {
 
-  console.log(isWidthSmall)
   useLayoutEffect(()=>{
     
         const colorPalette = ["#ACB9FF", "#503795", "#FFECC1", "#FFCC59", "#DFAB36", "#19B6A4", "#AEF5F5", "#2CD7C4", "#FEDF9A", "#C2E9FF", "#7299FF", "#4067CD", "#E289F2", "#855CF8"];
@@ -33,7 +32,9 @@ export default function SemiCircleChart({chartId,data,totalDownload,isWidthSmall
               endAngle: 360,
               layout: isWidthSmall ? root.verticalLayout : root.horizontalLayout,
               innerRadius: am5.percent(50),
-              centerY: isWidthSmall ? am5.percent(10) : 0
+              centerY: isWidthSmall ? am5.percent(10) : 0,
+              x:isWidthSmall ? am5.percent(0) : am5.percent(-5),
+              
             }));
             
             // Create series
@@ -81,12 +82,12 @@ export default function SemiCircleChart({chartId,data,totalDownload,isWidthSmall
 
               var legend = chart.children.push(am5.Legend.new(root, {
                 centerY: am5.percent(50),
-                y: isWidthSmall ? am5.percent(80) : am5.percent(50),
+                y: isWidthSmall ? am5.percent(80) : am5.percent(55),
                 centerX:am5.percent(90),
-                x:am5.percent(95),
+                x:isWidthSmall ? am5.percent(85) : am5.percent(95),
                 layout: root.verticalLayout,
-                height:isWidthSmall ? 100 : 200,
-                width:isWidthSmall ? 320 : 300,
+                height:isWidthSmall ? 150 : 250,
+                width:isWidthSmall ? 320 : 275,
                 verticalScrollbar: am5.Scrollbar.new(root, {
                     orientation: "vertical"
                 }),

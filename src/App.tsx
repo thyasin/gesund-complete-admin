@@ -14,11 +14,12 @@ import {useState} from "react"
 import "./app.css";
 import { ThemeSwitcherProvider } from "react-css-theme-switcher";
 import { PDfDownload } from "pages/download_pdf";
-import { Header } from "components/layout";
 
 import { SelectOutlined } from "@ant-design/icons";
 import Dashboard from "pages/dashboard/Dashboard";
 import { VisitStats } from "pages/visit_stats";
+import { Header } from "components/layout/Header";
+import { CustomSider } from "components/layout/Sider";
 
 function App() {
   const currThemes = {
@@ -41,6 +42,8 @@ function App() {
     )}
     Layout={Layout}
     Header={Header}
+    Sider={CustomSider}
+
       catchAll={<ErrorComponent />}
       routerProvider={{
         ...routerProvider,

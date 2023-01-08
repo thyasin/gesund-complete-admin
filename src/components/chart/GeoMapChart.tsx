@@ -20,6 +20,7 @@ export default function GeoMapChart({ chartId,data }: any) {
         panX: "translateX",
         panY: "translateY",
         projection: am5map.geoNaturalEarth1(),
+        
   // rotationX: -154.8
       })
     );
