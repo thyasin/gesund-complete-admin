@@ -87,7 +87,7 @@ export default function SemiCircleChart({chartId,data,totalDownload,isWidthSmall
                 x:isWidthSmall ? am5.percent(85) : am5.percent(95),
                 layout: root.verticalLayout,
                 height:isWidthSmall ? 150 : 250,
-                width:isWidthSmall ? 320 : 275,
+                width:isWidthSmall ? 280 : 275,
                 verticalScrollbar: am5.Scrollbar.new(root, {
                     orientation: "vertical"
                 }),

@@ -1,8 +1,8 @@
 import { useMany, useOne } from "@pankod/refine-core";
 import React, { useState, useEffect } from "react";
-import { Button, Progress, Select } from "@pankod/refine-antd";
+import { Button, Progress, Select, Spin } from "@pankod/refine-antd";
 import useDimension from "./hooks/useDimension";
-import { DownloadOutlined } from "@ant-design/icons";
+import { DownloadOutlined, LoadingOutlined } from "@ant-design/icons";
 import { useThemeSwitcher } from "react-css-theme-switcher";
 import { jsPDF } from "jspdf";
 import DownloadPdfModal from "./components/DownloadPdfModal";
@@ -110,7 +110,9 @@ export const PDfDownload: React.FC = ({
 
 
   return (
-    <div>
+    
+      <>{selectedPaperData ?
+      <div>
       {!(isDashboardMapChartView || isDashboardSemiPieView) ? <div>
         {selectDataForPapers && (
           <Select
@@ -196,6 +198,8 @@ export const PDfDownload: React.FC = ({
         handleCancel={handleCancel}
         selectedPaperData={selectedPaperData}
       />
-    </div>
+    </div> : <div className="spinnerDownloadPdf"><Spin indicator={<LoadingOutlined style={{ fontSize: 54 }} spin />}/></div>}
+      </>
+     
   );
 };
