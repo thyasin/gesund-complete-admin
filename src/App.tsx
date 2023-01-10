@@ -11,7 +11,7 @@ import { AuthPage } from "pages/auth";
 import "react-toastify/dist/ReactToastify.css";
 import { dataProvider } from "dataProvider";
 import {useState} from "react"
-import "./app.css";
+import "./app.scss";
 import { ThemeSwitcherProvider } from "react-css-theme-switcher";
 import { PDfDownload } from "pages/download_pdf";
 

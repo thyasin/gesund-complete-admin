@@ -1,0 +1,19 @@
+.headerItems {
+    padding: 10px 10px;
+}
+
+.avatarImage {
+    border-radius: 100%;
+    padding: 10px 10px;
+    width: 55px;
+    height: 55px;
+}
+
+.antHeader {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0px 24px;
+    height: 64px; 
+    border-bottom: 1px solid #424C5D;
+}

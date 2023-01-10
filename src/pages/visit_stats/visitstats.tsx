@@ -2,7 +2,7 @@ import { useList } from "@pankod/refine-core";
 import { Select, Spin } from "@pankod/refine-antd";
 import { Options } from "./options";
 import { useState } from "react";
-import "./style.css"
+import "./style.scss"
 import { OptionsTimeRange } from "./optionsTimeRange";
 import GeoChart from "components/chart/GeoChart";
 import { LoadingOutlined } from "@ant-design/icons";

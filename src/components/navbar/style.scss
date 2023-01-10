@@ -1,0 +1,19 @@
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 4%;
+}
+
+.avatarImage {
+    border-radius: 100%;
+    padding: 10px 10px;
+    width: 55px;
+    height: 55px;
+}
+
+.logoutButton {
+    background-color: transparent;
+    border: none;
+    display: none;
+}

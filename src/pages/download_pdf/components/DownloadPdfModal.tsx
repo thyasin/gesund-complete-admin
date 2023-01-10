@@ -51,7 +51,7 @@ export default function DownloadPdfModal({ isModalOpen, createPDF, handleOk, han
                 (<div>
                     <div>
                         <h3 className="filt-opt">Filter Options</h3>
-                        <p className='subfilt'>All information options are selected by default. Please deselect the information you don't need or don't want to see.</p>
+                        <p className='subFilter'>All information options are selected by default. Please deselect the information you don't need or don't want to see.</p>
                         <Checkbox defaultChecked onChange={(e) => setTableCols({ ...tableCols, firstname: e.target.checked })} >First Name</Checkbox>
                         <Checkbox defaultChecked onChange={(e) => setTableCols({ ...tableCols, lastname: e.target.checked })} >Last Name</Checkbox>
                         <Checkbox defaultChecked onChange={(e) => setTableCols({ ...tableCols, workfor: e.target.checked })} >Work For</Checkbox>
@@ -60,11 +60,11 @@ export default function DownloadPdfModal({ isModalOpen, createPDF, handleOk, han
                         <Checkbox defaultChecked onChange={(e) => setTableCols({ ...tableCols, role: e.target.checked })} >Position</Checkbox>
                     </div>
                     <div>
-                        <p className='subfilt'>You can choose the pre-filled selectable options if you want to have more detailed results.</p>
+                        <p className='subFilter'>You can choose the pre-filled selectable options if you want to have more detailed results.</p>
                         {tableCols.workfor ? <Select mode="multiple" placeholder={"Work for options"} options={workforOptions.map(renderList)} onChange={(e) => setFilterOptions({ ...filterOptions, workfor: e })} /> : null}
                         {tableCols.country ? <Select mode="multiple" placeholder={"Country"} options={countryOptions.map(renderList)} onChange={(e) => setFilterOptions({ ...filterOptions, country: e })} /> : null}
                         {tableCols.role ? <Select mode="multiple" placeholder={"Position"} options={roleOptions.map(renderList)} onChange={(e) => setFilterOptions({ ...filterOptions, role: e })} /> : null}
-                        <p className='subfilt'></p>
+                        <p className='subFilter'></p>
                     </div>
                 </div>)
                 : (<div id="pdf" >

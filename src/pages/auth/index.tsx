@@ -1,6 +1,6 @@
 import { AuthPage as AntdAuthPage, AuthProps } from "@pankod/refine-antd";
 import { useRouterContext } from "@pankod/refine-core";
-import "./style.less";
+import "./style.scss";
 
 const authWrapperProps = {
     style: {
@@ -14,7 +14,7 @@ const RenderAuthContent = (content: React.ReactNode) => {
     const { Link } = useRouterContext();
 
     return (
-        <div className="general_bar"
+        <div className="generalBar"
             
         >
             <Link to="/">

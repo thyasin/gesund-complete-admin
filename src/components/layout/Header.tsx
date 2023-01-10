@@ -6,6 +6,7 @@ import {
 } from "@pankod/refine-antd";
 import { Tooltip } from "@pankod/refine-antd";
 import { useGetIdentity, useLogout } from "@pankod/refine-core";
+import "./style.scss";
 
 export const Header: React.FC = () => {
     const [isLightMode, setIsLightMode] = useState<boolean>();
@@ -18,10 +19,10 @@ export const Header: React.FC = () => {
         switcher({ theme: isChecked ? themes.dark : themes.light });
     };
     return (
-        <AntdLayout.Header className="ant-head"
+        <AntdLayout.Header className="antHeader"
         >
-            <div className="head-items">
-            <img className="avatar_img" src={identity?.avatar} alt="" />
+            <div className="headerItems">
+            <img className="avatarImage" src={identity?.avatar} alt="" />
         {identity?.email}
         </div>
         <Tooltip title="logout">

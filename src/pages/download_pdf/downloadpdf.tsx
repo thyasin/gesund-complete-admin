@@ -116,7 +116,7 @@ export const PDfDownload: React.FC = ({
       {!(isDashboardMapChartView || isDashboardSemiPieView) ? <div>
         {selectDataForPapers && (
           <Select
-            className="select_btn"
+            className="selectButton"
             allowClear
             placeholder="Select a paper"
             defaultValue={selectDataForPapers[0]?.value}
@@ -154,9 +154,9 @@ export const PDfDownload: React.FC = ({
           </div>
           
         ))}
-      <div className="chart_gen">
+      <div className="chartsGeneral">
         {!isDashboardSemiPieView ? (
-          <div className="chart_chi">
+          <div className="chartsChildren">
             {/* <GeoChart chartId="geochart" data={geoChartData} /> */}
             <div>
             <span className="mapTitle"><b>Users</b> by Country</span>
