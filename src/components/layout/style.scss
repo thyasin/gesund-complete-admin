@@ -17,3 +17,9 @@
     height: 64px; 
     border-bottom: 1px solid #424C5D;
 }
+
+.sidebarItem{
+    .ant-menu-title-content{
+        margin-left: 2px !important;
+    }
+}

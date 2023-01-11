@@ -2,7 +2,18 @@
     background-color: #252D3A;
     padding: 24px;
     border-radius: 10px;
-    height:88vh;
+
+    .pdfDownloadMainTitleBox{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 0px;
+        .pdfExportContainer{
+            display: flex;
+            justify-content: flex-start ;
+            align-items: center;
+        }
+    }
 
     .pageTitle{
         font-weight: bold;
@@ -56,6 +67,18 @@
         }
     }
 }
+.downloadPdfgeoMapChartContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    .mapTitle{
+        width: 100%;
+        align-self: flex-start;
+        font-size: 16px;
+    }
+}
 
 .semiPieChartContainer{
     display: flex;
@@ -64,23 +87,19 @@
     width: 100%;
 }
 
-.mapTitle{
-    font-size: 16px;
-}
 
 .spinnerDownloadPdf{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 59vw;
-    height: 20vw;
+    width: 100%;
+    height: 750px;
 }
 
 .selectButton {
-    float: right;
-    width: 15%;
-    color: rgb(0, 0, 0);
-}
+    align-self: flex-end;
+    width: auto;
+    }
 
 .chartsGeneral {
     display: flex;
@@ -99,9 +118,26 @@
 
 @media only screen and (max-width: 767px) {
 
+    .pdfDownladMain{
+        padding: 12px;
+        .pdfDownloadMainTitleBox{
+            flex-direction: column;
+            gap: 12px;
+            .pdfExportContainer{
+                justify-content: space-between ;
+            }
+        } 
+        .pageTitle{
+
+    }}
     
     .pdfDownloadCountryBox{
         width: 100%;
+        flex-direction: column;
+        width: 25%;
+    justify-content: flex-start;
+    height: 300px;
+    overflow-y: scroll;
         .totalDownloadBox{
             margin-top: 12px;
             margin-bottom: 12px;
@@ -109,8 +145,22 @@
     }
 
     .selectButton {
-        float: right;
-        width: 45%;
+        align-self: flex-end;
+        width: 35%;
+ 
+    }
+
+    .downloadPdfgeoMapChartContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        .mapTitle{
+            width: 100%;
+            align-self: flex-start;
+            font-size: 16px;
+        }
     }
 
     .chartsGeneral {
@@ -124,6 +174,10 @@
         width: 100%;
         display: flex;
         flex-direction: column;
+    }
+
+    .spinnerDownloadPdf{
+        height: 600px;
     }
 
 }

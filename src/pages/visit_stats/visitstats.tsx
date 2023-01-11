@@ -34,9 +34,9 @@ data?.rows?.map((i: any) =>{
 
   return (
     <div className="visitStatsMain">
-      <div style={{display:"flex", justifyContent:"space-between",marginBottom:"26px",}}>
+      <div className="visitStatsPageTitle" >
       <span className="pageTitle" >Visit Stats</span>
-<div>
+<div className="filterBox">
   <Select placeholder="Select a filter" style={{marginRight:"6px"}} defaultValue={"7daysAgo"} options={OptionsTimeRange} onChange={(e)=>setSelectedTimeRange(e)}/>
     <Select placeholder="Select a filter" defaultValue={"eventCount"} options={Options} onChange={(e)=>setSelectedFilter(e)}/>
 </div>
@@ -45,10 +45,9 @@ data?.rows?.map((i: any) =>{
 
       {data ? <div style={{ display: "flex" }} className="mainVisitBox">
         <div className="visitPieBox">
-        {/* <GeoChart data={dataPie} chartId="geochartvisit" /> */}
-        <span className="mapTitle">
+        <div className="mapTitle">
                   <b>Users</b> by Country
-                </span>
+                </div>
         <GeoMapChart
                   isWidthSmall={isWidthSmall}
                   chartId="geomapchartPdf"
@@ -58,7 +57,7 @@ data?.rows?.map((i: any) =>{
         <div className="rightColBox">
           <div className="visitTextBox">
           <div className="visitSumBox">
-                  <span className="totalDownloadBoxTitle">Total Download </span> <span>{sum}</span></div>
+                  <span className="totalDownloadBoxTitle">Total Page Views </span> <span>{sum}</span></div>
             
           {(data?.rows?.map((i: any) =>
           (            <div key={i.dimensionValues[0].value}>

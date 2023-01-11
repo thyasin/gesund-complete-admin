@@ -1,21 +1,31 @@
-.visitStatsMain{
-    background-color: #252D3A;
+.visitStatsMain {
+    background-color: #252d3a;
     border-radius: 10px;
     padding: 24px;
-    height:88vh;
-    .pageTitle{
-        font-size: 16px;
-        font-weight: bold;
+
+    .visitStatsPageTitle {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 26px;
+        gap: 0px;
+         .pageTitle {
+            font-size: 16px;
+            font-weight: bold;
+        }
     }
 }
 
 .mainVisitBox {
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
 .visitPieBox {
     width: auto;
+    flex-direction: row;
 }
 
 .visitTextBox {
@@ -24,7 +34,7 @@
     height: 450px;
     overflow-y: scroll;
 
-    .visitSumBox{
+    .visitSumBox {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -32,14 +42,11 @@
         font-weight: bold;
         margin-bottom: 24px;
     }
-
 }
 
-.rightColBox{
-
+.rightColBox {
     width: 25%;
     height: 60%;
- 
 }
 
 .totalTextBox {
@@ -61,9 +68,21 @@
     height: 750px;
 }
 
-
 @media only screen and (max-width: 767px) {
-
+    .visitStatsMain {
+        padding: 12px;
+        .visitStatsPageTitle {
+            margin-bottom: 12px;
+            gap: 12px;
+             .pageTitle {
+                font-size: 16px;
+                font-weight: bold;
+            }
+            .filterBox{
+                align-self: flex-end;
+            }
+        }
+    }
     .mainVisitBox {
         flex-direction: column;
     }
@@ -71,8 +90,13 @@
     .visitPieBox {
         width: 100%;
         display: flex;
+        flex-direction: column;
+        gap: 12px;
         align-items: center;
         justify-content: center;
+        .mapTitle{
+            align-self: flex-start;
+        }
     }
 
     .visitTextBox {
@@ -86,8 +110,8 @@
         height: auto !important;
     }
 
-    .rightColBox{
-        width: 80%;
+    .rightColBox {
+        width: 100%;
     }
 
     .totalTextBox {
@@ -99,5 +123,7 @@
         border-bottom: 1px solid gray;
     }
 
-
+    .spinner {
+        height: 600px;
+    }
 }

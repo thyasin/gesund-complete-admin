@@ -12,10 +12,10 @@ import {
 import { AntdLayout, Menu, useMenu, Grid, Sider } from "@pankod/refine-antd";
 import {
     DashboardOutlined,
-    LogoutOutlined,
     UnorderedListOutlined,
 } from "@ant-design/icons";
 import { antLayoutSider, antLayoutSiderMobile } from "./styles";
+import "./style.scss"
 
 export const CustomSider: typeof Sider = ({ render }) => {
     const [collapsed, setCollapsed] = useState<boolean>(false);
@@ -60,6 +60,7 @@ export const CustomSider: typeof Sider = ({ render }) => {
                     params={{ resource: item }}
                 >
                     <Menu.Item
+                        className="sidebarItem"
                         key={route}
                         style={{
                             fontWeight: isSelected ? "bold" : "normal",
@@ -78,6 +79,7 @@ export const CustomSider: typeof Sider = ({ render }) => {
 
     const logout = isExistAuthentication && (
         <Menu.Item
+            className="sidebarItem"
             key="logout"
             onClick={() => mutateLogout()}
             icon={<img src="./logout.svg" alt="logout" />}
@@ -88,6 +90,7 @@ export const CustomSider: typeof Sider = ({ render }) => {
 
     const dashboard = hasDashboard ? (
         <Menu.Item
+            className="sidebarItem"
             key="dashboard"
             style={{
                 fontWeight: selectedKey === "/" ? "bold" : "normal",

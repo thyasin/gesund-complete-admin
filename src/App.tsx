@@ -91,17 +91,19 @@ function App() {
         {
           name : "dashboard",
           list: Dashboard,
-          icon: <img src="./dashboard.svg"/>
+          icon: <img src="./dashboard.svg"/>,
         },
         {
-          name : "pdf-download",
+          name : "resource-download",
           list: PDfDownload,
-          icon: <img src="./download.svg"/>
+          icon: <img src="./download.svg"/>,
+          options: { label: "Resource Downloads"}
         },
         {
           name : "visit-stats",
           list: VisitStats,
-          icon: <img src="./visit.svg"/>
+          icon: <img src="./visit.svg"/>,
+          options: { label: "Visit Stats" }
         },
       ]}
       

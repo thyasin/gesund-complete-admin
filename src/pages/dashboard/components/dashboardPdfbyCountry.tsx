@@ -61,15 +61,15 @@ export const DashboardPdfbyCountry: React.FC = () => {
             </div>
             <div className="pdfDownloadCountryBox">
               <div className="totalDownloadBox">
-                <span className="totalDownloadBoxTitle">Total Download </span>
+                <span className="totalDownloadBoxTitleDashboard">Total Download </span>
                 {selectedPaperData && (
-                  <span  className="totalDownloadBoxTitle">{Object.values(selectedPaperData).length}</span>
+                  <span  className="totalDownloadBoxTitleDashboard">{Object.values(selectedPaperData).length}</span>
                 )}
               </div>
               {Object.keys(geoChartData).sort((a,b)=>geoChartData[b] - geoChartData[a])
                 .slice(0, 4)
                 .map((i) => (
-                  <div className="textWithProgressBar">
+                  <div className="textWithProgressBarDashboard">
                     <div className="downloadbyCountry">
                     <span>{i}</span>
                     <span>{geoChartData[i]}</span>
@@ -77,11 +77,11 @@ export const DashboardPdfbyCountry: React.FC = () => {
                   {selectedPaperData && <Progress percent={(geoChartData[i] / Object.values(selectedPaperData).length)* 100} showInfo={false} strokeColor="#fff" />}
                   </div>
                 ))}
-                <ViewAll path="/pdf-download"/>
+                <ViewAll path="/resource-download"/>
             </div>
           </div>
       </div>
-    </div> : <div className="spinnerDownloadPdf"><Spin indicator={<LoadingOutlined style={{ fontSize: 54 }} spin />}/></div>}
+    </div> : <div className="spinnerDashboardDownloadPdf"><Spin indicator={<LoadingOutlined style={{ fontSize: 54 }} spin />}/></div>}
       </>
      
   );

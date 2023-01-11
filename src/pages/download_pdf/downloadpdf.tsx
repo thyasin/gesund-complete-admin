@@ -71,30 +71,30 @@ export const PDfDownload: React.FC = () => {
     });
 
   return (
-    <>
+    <div className="pdfDownladMain">
       {selectedPaperData ? (
-        <div className="pdfDownladMain">
-          <div>
-            {selectDataForPapers && (
-              <Select
-                className="selectButton"
-                placeholder="Select a paper"
-                defaultValue={selectDataForPapers[0]?.value}
-                options={selectDataForPapers}
-                onChange={(e) => setSelectedPaper(e)}
-              />
-            )}
-            <div>
-              <span className="pageTitle" >Pdf Downloads</span>
+        <div>
+          <div className="pdfDownloadMainTitleBox">
+            <div className="pdfExportContainer">
+              <span className="pageTitle" >Resource Downloads</span>
               <Button
               type="primary"
               className="pdfexpbtn"
               onClick={showModal}
               icon={<DownloadOutlined />}
-            >
+              >
               Export Report Pdf
             </Button>
             </div>
+              {selectDataForPapers && (
+                <Select
+                  className="selectButton"
+                  placeholder="Select a paper"
+                  defaultValue={selectDataForPapers[0]?.value}
+                  options={selectDataForPapers}
+                  onChange={(e) => setSelectedPaper(e)}
+                />
+              )}
             
           </div>
           {selectedPaperData && (
@@ -109,10 +109,10 @@ export const PDfDownload: React.FC = () => {
           )}
           <div className="chartsGeneral">
             <div className="chartsChildren">
-              <div>
-                <span className="mapTitle">
+              <div className="downloadPdfgeoMapChartContainer">
+                <div className="mapTitle">
                   <b>Users</b> by Country
-                </span>
+                </div>
                 <GeoMapChart
                   isWidthSmall={isWidthSmall}
                   chartId="geomapchart"
@@ -165,6 +165,6 @@ export const PDfDownload: React.FC = () => {
           <Spin indicator={<LoadingOutlined style={{ fontSize: 54 }} spin />} />
         </div>
       )}
-    </>
+    </div>
   );
 };

@@ -110,8 +110,9 @@
         justify-content: space-between;
         margin-bottom: 24px;
         margin-top: 0;
-        .totalDownloadBoxTitle{
+        .totalDownloadBoxTitleDashboard{
             font-weight: bold;
+            font-size: 18px;
         }
     }
 
@@ -121,7 +122,7 @@
         justify-content: space-between;}
 }
 
-.textWithProgressBar{
+.textWithProgressBarDashboard{
     display: flex;
     flex-direction: column;
     .progressBar{
@@ -149,18 +150,12 @@
     font-size: 16px;
 }
 
-.spinnerDownloadPdf{
+.spinnerDashboardDownloadPdf{
     display: flex;
     align-items: center;
     justify-content: center;
     width: 59vw;
     height: 20vw;
-}
-
-.selectButton {
-    float: right;
-    width: 15%;
-    color: rgb(0, 0, 0);
 }
 
 .chartsGeneralDashboard {
@@ -212,11 +207,6 @@
                 margin-top: 12px;
                 margin-bottom: 12px;
             }
-        }
-    
-        .selectButton {
-            float: right;
-            width: 45%;
         }
     
         .chartsGeneralDashboard {
