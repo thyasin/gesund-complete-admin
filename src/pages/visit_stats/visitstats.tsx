@@ -1,15 +1,15 @@
 import { useList } from "@pankod/refine-core";
-import { Select, Spin } from "@pankod/refine-antd";
+import { Progress, Select, Spin } from "@pankod/refine-antd";
 import { Options } from "./options";
 import { useState } from "react";
 import "./style.scss"
 import { OptionsTimeRange } from "./optionsTimeRange";
-import GeoChart from "components/chart/GeoChart";
 import { LoadingOutlined } from "@ant-design/icons";
 import GeoMapChart from "components/chart/GeoMapChart";
+import useDimension from "pages/download_pdf/hooks/useDimension";
 
 export const VisitStats: React.FC = () =>{
-
+  const isWidthSmall = useDimension()
 
   const [ selectedFilter,setSelectedFilter] = useState("eventCount")
   const [ selectedTimeRange,setSelectedTimeRange] = useState("7daysAgo")
@@ -33,34 +33,48 @@ data?.rows?.map((i: any) =>{
   const antIcon = <LoadingOutlined style={{ fontSize: 54 }} spin />;
 
   return (
-    <div>
-      <div style={{display:"flex", justifyContent:"flex-end"}}>
-
-    <Select placeholder="Select a filter" style={{marginRight:"6px"}} defaultValue={"7daysAgo"} options={OptionsTimeRange} onChange={(e)=>setSelectedTimeRange(e)}/>
+    <div className="visitStatsMain">
+      <div style={{display:"flex", justifyContent:"space-between",marginBottom:"26px",}}>
+      <span className="pageTitle" >Visit Stats</span>
+<div>
+  <Select placeholder="Select a filter" style={{marginRight:"6px"}} defaultValue={"7daysAgo"} options={OptionsTimeRange} onChange={(e)=>setSelectedTimeRange(e)}/>
     <Select placeholder="Select a filter" defaultValue={"eventCount"} options={Options} onChange={(e)=>setSelectedFilter(e)}/>
+</div>
+    
       </div>
+
       {data ? <div style={{ display: "flex" }} className="mainVisitBox">
         <div className="visitPieBox">
-        <GeoChart data={dataPie} chartId="geochartvisit" />
-        {/* <GeoMapChart chartId="geomapchart"/> */}
+        {/* <GeoChart data={dataPie} chartId="geochartvisit" /> */}
+        <span className="mapTitle">
+                  <b>Users</b> by Country
+                </span>
+        <GeoMapChart
+                  isWidthSmall={isWidthSmall}
+                  chartId="geomapchartPdf"
+                  data={dataPie}
+                />
         </div>
         <div className="rightColBox">
           <div className="visitTextBox">
+          <div className="visitSumBox">
+                  <span className="totalDownloadBoxTitle">Total Download </span> <span>{sum}</span></div>
+            
           {(data?.rows?.map((i: any) =>
-          (
-            <div key={i.dimensionValues[0].value} style={{ display: "flex", justifyContent: "space-between", width: "100%" }} >
-              <span>{i.dimensionValues[0].value} :</span>
-              {i.metricValues[0].value}
-            </div>
-          )
-            // [data.dimensionHeaders[0].name]: i.dimensionValues[0].value, [data.metricHeaders[0].name]: i.metricValues[0].value 
+          (            <div key={i.dimensionValues[0].value}>
+                      <div style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
+                        <span >{i.dimensionValues[0].value}</span>
+                        <span>{i.metricValues[0].value}</span>
+                      </div>                  
+                        <Progress
+                          percent={(i.metricValues[0].value / sum) * 100}
+                          showInfo={false}
+                          strokeColor="#fff"
+                        />
+                    </div>)
           ))}
          
         </div> 
-        <div className="totalTextBox" >
-
-        Total {selectedFilter === "eventCount" ? "Page Views" : " Unique Visitors"} : <span>{sum}</span>
-        </div>
         </div>
         
 
