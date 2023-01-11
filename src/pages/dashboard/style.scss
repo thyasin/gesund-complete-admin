@@ -1,10 +1,4 @@
 .MainDashboard {
-    // display: grid;
-
-    // grid-template-areas:
-    //     "pdf pdf user"
-    //     "visit visit visit"
-    //     "visit visit visit";
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -16,7 +10,6 @@
         flex-direction: row;
         gap: 24px;
         .pdfDownloadInfoBox {
-        // width: 65vw;
         display: flex;
         align-items: center;
         justify-content: center;
